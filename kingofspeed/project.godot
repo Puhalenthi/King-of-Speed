@@ -11,5 +11,5 @@ config_version=5
 [application]
 
 config/name="KingOfSpeed"
+run/main_scene="uid://bey1012cmyh0m"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
