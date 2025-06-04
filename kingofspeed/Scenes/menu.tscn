@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bey1012cmyh0m"]
+[gd_scene load_steps=6 format=3 uid="uid://bey1012cmyh0m"]
 
-[ext_resource type="VideoStream" uid="uid://cck0bstdp31d6" path="res://mn.ogv" id="1_lti8b"]
-[ext_resource type="FontFile" uid="uid://drudngol87yc" path="res://NCLNeovibes-Demo.otf" id="2_ouk20"]
+[ext_resource type="VideoStream" uid="uid://cck0bstdp31d6" path="res://mn.ogv" id="1_cayip"]
+[ext_resource type="FontFile" uid="uid://drudngol87yc" path="res://NCLNeovibes-Demo.otf" id="2_158mb"]
+[ext_resource type="Script" uid="uid://chevttyx8rct8" path="res://Scripts/quit.gd" id="3_wwsa2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mae5d"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -15,7 +16,7 @@ offset_left = -649.0
 offset_top = -368.0
 offset_right = 661.0
 offset_bottom = 379.0
-stream = ExtResource("1_lti8b")
+stream = ExtResource("1_cayip")
 autoplay = true
 loop = true
 
@@ -40,37 +41,40 @@ offset_right = 606.0
 offset_bottom = 249.0
 color = Color(0, 0.592157, 0.858824, 0.454902)
 
-[node name="Button" type="Button" parent="."]
+[node name="Play" type="Button" parent="."]
 offset_left = -242.0
 offset_top = 129.0
 offset_right = -139.0
 offset_bottom = 164.0
-theme_override_fonts/font = ExtResource("2_ouk20")
+theme_override_fonts/font = ExtResource("2_158mb")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/hover = SubResource("StyleBoxFlat_mae5d")
 theme_override_styles/normal = SubResource("StyleBoxTexture_ouk20")
 text = "P L A Y"
 
-[node name="Button2" type="Button" parent="."]
+[node name="Options" type="Button" parent="."]
 offset_left = -244.0
 offset_top = 172.0
 offset_right = -82.0
 offset_bottom = 207.0
-theme_override_fonts/font = ExtResource("2_ouk20")
+theme_override_fonts/font = ExtResource("2_158mb")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/hover = SubResource("StyleBoxFlat_mae5d")
 theme_override_styles/normal = SubResource("StyleBoxTexture_ouk20")
 text = "O P T I O N S"
 
-[node name="Button3" type="Button" parent="."]
+[node name="Quit" type="Button" parent="."]
 offset_left = -282.0
 offset_top = 217.0
 offset_right = -120.0
 offset_bottom = 252.0
-theme_override_fonts/font = ExtResource("2_ouk20")
+theme_override_fonts/font = ExtResource("2_158mb")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/hover = SubResource("StyleBoxFlat_mae5d")
 theme_override_styles/normal = SubResource("StyleBoxTexture_ouk20")
 text = "Q U I T"
+script = ExtResource("3_wwsa2")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="pressed" from="Quit" to="Quit" method="_on_pressed"]
