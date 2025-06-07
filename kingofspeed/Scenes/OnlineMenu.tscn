@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://cfr8a6nnlemt7"]
+[gd_scene load_steps=2 format=3 uid="uid://d26ifd4nga5eu"]
 
-[ext_resource type="Script" uid="uid://wyq2rb1orde3" path="res://Scripts/BackToMain.gd" id="1_gug4c"]
+[ext_resource type="Script" uid="uid://wyq2rb1orde3" path="res://Scripts/BackToMain.gd" id="1_d0d6v"]
 
-[node name="LocalMenu" type="Node2D"]
+[node name="OnlineMenu" type="Node2D"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -27,29 +27,26 @@ alignment = 1
 
 [node name="Label" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Player 1 Username"
+text = "Online Multiplayer"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LocalUsername1" type="LineEdit" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="HostButton" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-placeholder_text = "Username:"
-alignment = 1
+text = "Host"
 
-[node name="Label2" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="JoinButton" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Player 2 Username"
-horizontal_alignment = 1
-vertical_alignment = 1
+text = "Join"
 
-[node name="LocalUsername2" type="LineEdit" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="AddressEntry" type="LineEdit" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-placeholder_text = "Username:"
+placeholder_text = "Enter IP Address"
 alignment = 1
 
 [node name="BackToMain" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Back to Main Menu"
-script = ExtResource("1_gug4c")
+script = ExtResource("1_d0d6v")
 
 [connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/BackToMain" to="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/BackToMain" method="_on_pressed"]
