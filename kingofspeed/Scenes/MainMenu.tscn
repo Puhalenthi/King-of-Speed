@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://bey1012cmyh0m"]
+[gd_scene load_steps=12 format=3 uid="uid://bey1012cmyh0m"]
 
 [ext_resource type="VideoStream" uid="uid://cck0bstdp31d6" path="res://mn.ogv" id="1_ghw46"]
 [ext_resource type="FontFile" uid="uid://drudngol87yc" path="res://NCLNeovibes-Demo.otf" id="2_df05h"]
-[ext_resource type="Script" uid="uid://bwds345lnfc65" path="res://Scripts/MainPlay.gd" id="3_8um5k"]
+[ext_resource type="Script" uid="uid://bwds345lnfc65" path="res://Scripts/PlayLocal.gd" id="3_8um5k"]
+[ext_resource type="Script" uid="uid://b60wcvbbf725i" path="res://Scripts/PlayOnline.gd" id="3_df05h"]
 [ext_resource type="Script" uid="uid://chevttyx8rct8" path="res://Scripts/MainQuit.gd" id="4_xim88"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cayip"]
@@ -87,7 +88,7 @@ theme_override_font_sizes/font_size = 20
 theme_override_styles/hover = SubResource("StyleBoxFlat_cayip")
 theme_override_styles/normal = SubResource("StyleBoxFlat_158mb")
 text = "O N L I N E"
-script = ExtResource("3_8um5k")
+script = ExtResource("3_df05h")
 
 [node name="PlayLocal" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
