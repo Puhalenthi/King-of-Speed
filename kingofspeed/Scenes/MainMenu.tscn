@@ -1,0 +1,120 @@
+[gd_scene load_steps=11 format=3 uid="uid://bey1012cmyh0m"]
+
+[ext_resource type="VideoStream" uid="uid://cck0bstdp31d6" path="res://mn.ogv" id="1_ghw46"]
+[ext_resource type="FontFile" uid="uid://drudngol87yc" path="res://NCLNeovibes-Demo.otf" id="2_df05h"]
+[ext_resource type="Script" uid="uid://bwds345lnfc65" path="res://Scripts/MainPlay.gd" id="3_8um5k"]
+[ext_resource type="Script" uid="uid://chevttyx8rct8" path="res://Scripts/MainQuit.gd" id="4_xim88"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cayip"]
+bg_color = Color(0.335463, 0.675451, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_158mb"]
+bg_color = Color(0.160784, 0.615686, 1, 0.568627)
+border_color = Color(0.160784, 0.615686, 1, 0.568627)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jsrd8"]
+bg_color = Color(0.337255, 0.67451, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wwsa2"]
+bg_color = Color(0.160784, 0.615686, 1, 0.568627)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wbdvm"]
+bg_color = Color(0.337255, 0.67451, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q3rjx"]
+bg_color = Color(0.160784, 0.615686, 1, 0.568627)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Node2D" type="Node2D"]
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+offset_left = -649.0
+offset_top = -368.0
+offset_right = 661.0
+offset_bottom = 379.0
+stream = ExtResource("1_ghw46")
+autoplay = true
+loop = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 441.0
+offset_bottom = 441.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="PlayOnline" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_df05h")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/hover = SubResource("StyleBoxFlat_cayip")
+theme_override_styles/normal = SubResource("StyleBoxFlat_158mb")
+text = "O N L I N E"
+script = ExtResource("3_8um5k")
+
+[node name="PlayLocal" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_df05h")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/hover = SubResource("StyleBoxFlat_cayip")
+theme_override_styles/normal = SubResource("StyleBoxFlat_158mb")
+text = "L O C A L"
+script = ExtResource("3_8um5k")
+
+[node name="Options" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_df05h")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/hover = SubResource("StyleBoxFlat_jsrd8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_wwsa2")
+text = "O P T I O N S"
+
+[node name="Quit" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_df05h")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/hover = SubResource("StyleBoxFlat_wbdvm")
+theme_override_styles/normal = SubResource("StyleBoxFlat_q3rjx")
+text = "Q U I T"
+script = ExtResource("4_xim88")
+
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/PlayOnline" to="CanvasLayer/MarginContainer/VBoxContainer/PlayOnline" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/PlayLocal" to="CanvasLayer/MarginContainer/VBoxContainer/PlayLocal" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Quit" to="CanvasLayer/MarginContainer/VBoxContainer/Quit" method="_on_pressed"]
