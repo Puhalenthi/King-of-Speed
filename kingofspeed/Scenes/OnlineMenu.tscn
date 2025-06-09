@@ -412,11 +412,18 @@ libraries = {
 
 [node name="Timer" type="Timer" parent="fade"]
 
+[node name="fade2" parent="." instance=ExtResource("1_kdake")]
+visible = false
+
+[node name="Timer2" type="Timer" parent="fade2"]
+
 [connection signal="mouse_entered" from="HostButton" to="ColorRect" method="_on_host_button_mouse_entered"]
 [connection signal="mouse_exited" from="HostButton" to="ColorRect" method="_on_host_button_mouse_exited"]
 [connection signal="mouse_entered" from="JoinButton" to="ColorRect2" method="_on_join_button_mouse_entered"]
 [connection signal="mouse_exited" from="JoinButton" to="ColorRect2" method="_on_join_button_mouse_exited"]
 [connection signal="mouse_entered" from="BackToMain" to="ColorRect3" method="_on_back_to_main_mouse_entered"]
 [connection signal="mouse_exited" from="BackToMain" to="ColorRect3" method="_on_back_to_main_mouse_exited"]
+[connection signal="pressed" from="BackToMain" to="." method="_on_back_to_main_pressed"]
 [connection signal="pressed" from="BackToMain" to="BackToMain" method="_on_pressed"]
 [connection signal="timeout" from="fade/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="fade2/Timer2" to="." method="_on_timer_2_timeout"]
