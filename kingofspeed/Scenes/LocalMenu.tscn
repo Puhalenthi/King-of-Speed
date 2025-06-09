@@ -1,55 +1,109 @@
-[gd_scene load_steps=2 format=3 uid="uid://cfr8a6nnlemt7"]
+[gd_scene load_steps=10 format=3 uid="uid://cfr8a6nnlemt7"]
 
+[ext_resource type="Script" uid="uid://rsbn57qevmn0" path="res://Scenes/local_menu.gd" id="1_11h3y"]
+[ext_resource type="Texture2D" uid="uid://dix63h2yho0yb" path="res://Images/image (2).png" id="1_bp7d8"]
 [ext_resource type="Script" uid="uid://wyq2rb1orde3" path="res://Scripts/BackToMain.gd" id="1_gug4c"]
+[ext_resource type="FontFile" uid="uid://q4s1an2fkmo4" path="res://Pixel Game.otf" id="1_wlrml"]
+[ext_resource type="PackedScene" uid="uid://x367r2ypk5m4" path="res://Scenes/color_rect.tscn" id="4_0fwj7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wlrml"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bp7d8"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0fwj7"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_11h3y"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="LocalMenu" type="Node2D"]
+script = ExtResource("1_11h3y")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Image(2)" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.780392)
+position = Vector2(581.5, 329)
+scale = Vector2(0.907031, 0.908333)
+texture = ExtResource("1_bp7d8")
 
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 15
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 30
-alignment = 1
-
-[node name="Label" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
+[node name="Label" type="Label" parent="."]
+offset_left = 399.0
+offset_top = 189.0
+offset_right = 740.0
+offset_bottom = 241.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("1_wlrml")
+theme_override_font_sizes/font_size = 50
 text = "Player 1 Username"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LocalUsername1" type="LineEdit" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
+[node name="LocalUsername1" type="LineEdit" parent="."]
+offset_left = 475.0
+offset_top = 247.0
+offset_right = 651.0
+offset_bottom = 296.0
+theme_override_colors/font_outline_color = Color(0.282353, 0.0509804, 0.447059, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("1_wlrml")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_wlrml")
 placeholder_text = "Username:"
 alignment = 1
 
-[node name="Label2" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
+[node name="Label2" type="Label" parent="."]
+offset_left = 396.0
+offset_top = 337.0
+offset_right = 743.0
+offset_bottom = 389.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("1_wlrml")
+theme_override_font_sizes/font_size = 50
 text = "Player 2 Username"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LocalUsername2" type="LineEdit" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
+[node name="LocalUsername2" type="LineEdit" parent="."]
+offset_left = 469.0
+offset_top = 396.0
+offset_right = 660.0
+offset_bottom = 445.0
+theme_override_colors/font_outline_color = Color(0.282353, 0.0509804, 0.447059, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("1_wlrml")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_bp7d8")
 placeholder_text = "Username:"
 alignment = 1
 
-[node name="BackToMain" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
+[node name="BackToMain" type="Button" parent="."]
+offset_left = 464.0
+offset_top = 544.0
+offset_right = 666.0
+offset_bottom = 575.0
+theme_override_colors/font_outline_color = Color(0.282353, 0.0509804, 0.447059, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("1_wlrml")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/hover = SubResource("StyleBoxFlat_0fwj7")
+theme_override_styles/normal = SubResource("StyleBoxFlat_11h3y")
 text = "Back to Main Menu"
 script = ExtResource("1_gug4c")
 
-[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/BackToMain" to="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/BackToMain" method="_on_pressed"]
+[node name="Lfade" parent="." instance=ExtResource("4_0fwj7")]
+
+[node name="Ltimer" type="Timer" parent="Lfade"]
+
+[node name="LLfade" parent="." instance=ExtResource("4_0fwj7")]
+
+[node name="LLtimer" type="Timer" parent="LLfade"]
+
+[connection signal="pressed" from="BackToMain" to="BackToMain" method="_on_pressed"]
+[connection signal="timeout" from="Lfade/Ltimer" to="." method="_on_ltimer_timeout"]

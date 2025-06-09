@@ -432,6 +432,11 @@ visible = false
 
 [node name="Timer3" type="Timer" parent="fade3"]
 
+[node name="localfade" parent="." instance=ExtResource("1_loo7a")]
+visible = false
+
+[node name="localtimer" type="Timer" parent="localfade"]
+
 [connection signal="mouse_entered" from="PlayOnline" to="ColorRect" method="_on_play_online_mouse_entered"]
 [connection signal="mouse_exited" from="PlayOnline" to="ColorRect" method="_on_play_online_mouse_exited"]
 [connection signal="pressed" from="PlayOnline" to="." method="_on_play_online_pressed"]
