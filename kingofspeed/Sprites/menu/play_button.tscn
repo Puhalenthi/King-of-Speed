@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://ci8u5lxm5by1q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8c5ym"]
+bg_color = Color(0, 0.635294, 0.964706, 0.345098)
+shadow_color = Color(0, 0.635294, 0.964706, 0.345098)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v8f0b"]
+bg_color = Color(0, 0.635294, 0.964706, 0.345098)
+shadow_color = Color(0, 0.635294, 0.964706, 0.345098)
+shadow_size = 20
+
+[node name="Play Button" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = -9.0
+offset_top = 317.0
+offset_right = 1164.0
+offset_bottom = 348.0
+theme_override_styles/hover = SubResource("StyleBoxFlat_8c5ym")
+theme_override_styles/normal = SubResource("StyleBoxFlat_v8f0b")
