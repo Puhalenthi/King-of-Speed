@@ -102,8 +102,11 @@ script = ExtResource("1_gug4c")
 [node name="Ltimer" type="Timer" parent="Lfade"]
 
 [node name="LLfade" parent="." instance=ExtResource("4_0fwj7")]
+visible = false
 
 [node name="LLtimer" type="Timer" parent="LLfade"]
 
+[connection signal="pressed" from="BackToMain" to="." method="_on_back_to_main_pressed"]
 [connection signal="pressed" from="BackToMain" to="BackToMain" method="_on_pressed"]
 [connection signal="timeout" from="Lfade/Ltimer" to="." method="_on_ltimer_timeout"]
+[connection signal="timeout" from="LLfade/LLtimer" to="." method="_on_l_ltimer_timeout"]
