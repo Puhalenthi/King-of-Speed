@@ -1,9 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://dow2ixlpb8xsu"]
 
-[ext_resource type="Texture2D" uid="uid://clxvm57n0ffy2" path="res://Images/Square.png" id="1_32aui"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_11uqx"]
+load_path = "res://.godot/imported/Square.png-609500d5d59ced2e77b5fd2e5b87a477.ctex"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vjepk"]
-texture = ExtResource("1_32aui")
+texture = SubResource("CompressedTexture2D_11uqx")
 6:6/0 = 0
 7:6/0 = 0
 8:6/0 = 0
