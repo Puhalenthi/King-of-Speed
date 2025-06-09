@@ -10,7 +10,7 @@ size = Vector2(20, 32)
 
 [node name="Player" type="Node2D"]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["player"]]
 script = ExtResource("1_rpqav")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="CharacterBody2D"]

@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bp2c1440kuuft"]
+
+[ext_resource type="Script" uid="uid://60j5xpm1ehti" path="res://Scripts/slope.gd" id="1_ci01f"]
+
+[node name="LeftSlope" type="Area2D" groups=["slope"]]
+position = Vector2(0, -1)
+script = ExtResource("1_ci01f")
+direction = -1
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-50, 50, 80, 50, 80, -50, 50, -50)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

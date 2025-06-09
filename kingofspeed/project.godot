@@ -14,6 +14,11 @@ config/name="KingOfSpeed"
 run/main_scene="uid://bey1012cmyh0m"
 config/features=PackedStringArray("4.4", "Forward Plus")
 
+[global_group]
+
+slope=""
+player=""
+
 [input]
 
 move_left={
