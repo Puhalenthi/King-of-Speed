@@ -1,8 +1,10 @@
-[gd_scene load_steps=27 format=3 uid="uid://d26ifd4nga5eu"]
+[gd_scene load_steps=29 format=3 uid="uid://d26ifd4nga5eu"]
 
 [ext_resource type="Texture2D" uid="uid://dix63h2yho0yb" path="res://Images/image (2).png" id="1_2u5t0"]
 [ext_resource type="FontFile" uid="uid://q4s1an2fkmo4" path="res://Pixel Game.otf" id="1_3ani7"]
+[ext_resource type="Script" uid="uid://b8rcjhtyrerht" path="res://Scenes/online_menu.gd" id="1_cgf1d"]
 [ext_resource type="Script" uid="uid://wyq2rb1orde3" path="res://Scripts/BackToMain.gd" id="1_d0d6v"]
+[ext_resource type="PackedScene" uid="uid://x367r2ypk5m4" path="res://Scenes/color_rect.tscn" id="1_kdake"]
 [ext_resource type="Texture2D" uid="uid://bi8apwat1hb4t" path="res://Images/poop2.png" id="3_6wiph"]
 [ext_resource type="Script" uid="uid://bhphx8ltgcrse" path="res://Scenes/color_rect.gd" id="5_mhoa1"]
 [ext_resource type="Script" uid="uid://cakpm7hgud47e" path="res://Scenes/2222222.gd" id="6_7u73u"]
@@ -300,6 +302,7 @@ _data = {
 }
 
 [node name="OnlineMenu" type="Node2D"]
+script = ExtResource("1_cgf1d")
 
 [node name="Image(2)" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.780392)
@@ -405,6 +408,10 @@ libraries = {
 &"": SubResource("AnimationLibrary_ht1ox")
 }
 
+[node name="fade" parent="." instance=ExtResource("1_kdake")]
+
+[node name="Timer" type="Timer" parent="fade"]
+
 [connection signal="mouse_entered" from="HostButton" to="ColorRect" method="_on_host_button_mouse_entered"]
 [connection signal="mouse_exited" from="HostButton" to="ColorRect" method="_on_host_button_mouse_exited"]
 [connection signal="mouse_entered" from="JoinButton" to="ColorRect2" method="_on_join_button_mouse_entered"]
@@ -412,3 +419,4 @@ libraries = {
 [connection signal="mouse_entered" from="BackToMain" to="ColorRect3" method="_on_back_to_main_mouse_entered"]
 [connection signal="mouse_exited" from="BackToMain" to="ColorRect3" method="_on_back_to_main_mouse_exited"]
 [connection signal="pressed" from="BackToMain" to="BackToMain" method="_on_pressed"]
+[connection signal="timeout" from="fade/Timer" to="." method="_on_timer_timeout"]

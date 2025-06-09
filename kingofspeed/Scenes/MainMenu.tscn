@@ -1,6 +1,8 @@
-[gd_scene load_steps=26 format=3 uid="uid://bey1012cmyh0m"]
+[gd_scene load_steps=28 format=3 uid="uid://bey1012cmyh0m"]
 
 [ext_resource type="Texture2D" uid="uid://dix63h2yho0yb" path="res://Images/image (2).png" id="1_cmrfp"]
+[ext_resource type="Script" uid="uid://cn2gwnmbs1ugo" path="res://Scenes/main_menu.gd" id="1_if7li"]
+[ext_resource type="PackedScene" uid="uid://x367r2ypk5m4" path="res://Scenes/color_rect.tscn" id="1_loo7a"]
 [ext_resource type="Script" uid="uid://bwds345lnfc65" path="res://Scripts/PlayLocal.gd" id="3_8um5k"]
 [ext_resource type="Script" uid="uid://b60wcvbbf725i" path="res://Scripts/PlayOnline.gd" id="3_df05h"]
 [ext_resource type="Script" uid="uid://chevttyx8rct8" path="res://Scripts/MainQuit.gd" id="4_xim88"]
@@ -310,6 +312,7 @@ _data = {
 }
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_if7li")
 
 [node name="Image(2)" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.780392)
@@ -420,12 +423,20 @@ position = Vector2(572, 237)
 scale = Vector2(0.482096, 0.389648)
 texture = ExtResource("10_loo7a")
 
+[node name="fade" parent="." instance=ExtResource("1_loo7a")]
+visible = false
+
+[node name="Timer" type="Timer" parent="fade"]
+
 [connection signal="mouse_entered" from="PlayOnline" to="ColorRect" method="_on_play_online_mouse_entered"]
 [connection signal="mouse_exited" from="PlayOnline" to="ColorRect" method="_on_play_online_mouse_exited"]
+[connection signal="pressed" from="PlayOnline" to="." method="_on_play_online_pressed"]
 [connection signal="pressed" from="PlayOnline" to="PlayOnline" method="_on_pressed"]
 [connection signal="mouse_entered" from="PlayLocal" to="ColorRect2" method="_on_play_local_mouse_entered"]
 [connection signal="mouse_exited" from="PlayLocal" to="ColorRect2" method="_on_play_local_mouse_exited"]
+[connection signal="pressed" from="PlayLocal" to="." method="_on_play_local_pressed"]
 [connection signal="pressed" from="PlayLocal" to="PlayLocal" method="_on_pressed"]
 [connection signal="mouse_entered" from="Quit" to="ColorRect4" method="_on_quit_mouse_entered"]
 [connection signal="mouse_exited" from="Quit" to="ColorRect4" method="_on_quit_mouse_exited"]
 [connection signal="pressed" from="Quit" to="Quit" method="_on_pressed"]
+[connection signal="timeout" from="fade/Timer" to="." method="_on_timer_timeout"]
