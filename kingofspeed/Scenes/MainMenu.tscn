@@ -1,20 +1,20 @@
 [gd_scene load_steps=12 format=3 uid="uid://bey1012cmyh0m"]
 
-[ext_resource type="VideoStream" uid="uid://cck0bstdp31d6" path="res://mn.ogv" id="1_ghw46"]
-[ext_resource type="FontFile" uid="uid://drudngol87yc" path="res://NCLNeovibes-Demo.otf" id="2_df05h"]
+[ext_resource type="Texture2D" uid="uid://dhciti4qkal5i" path="res://Images/YLmx3q-modified.png" id="1_8um5k"]
 [ext_resource type="Script" uid="uid://bwds345lnfc65" path="res://Scripts/PlayLocal.gd" id="3_8um5k"]
 [ext_resource type="Script" uid="uid://b60wcvbbf725i" path="res://Scripts/PlayOnline.gd" id="3_df05h"]
 [ext_resource type="Script" uid="uid://chevttyx8rct8" path="res://Scripts/MainQuit.gd" id="4_xim88"]
+[ext_resource type="FontFile" uid="uid://q4s1an2fkmo4" path="res://Pixel Game.otf" id="5_df05h"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cayip"]
-bg_color = Color(0.335463, 0.675451, 1, 1)
+bg_color = Color(0.337255, 0.67451, 1, 0)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_158mb"]
-bg_color = Color(0.160784, 0.615686, 1, 0.568627)
+bg_color = Color(0.160784, 0.615686, 1, 0)
 border_color = Color(0.160784, 0.615686, 1, 0.568627)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
@@ -22,28 +22,28 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jsrd8"]
-bg_color = Color(0.337255, 0.67451, 1, 1)
+bg_color = Color(0.337255, 0.67451, 1, 0)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wwsa2"]
-bg_color = Color(0.160784, 0.615686, 1, 0.568627)
+bg_color = Color(0.160784, 0.615686, 1, 0)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wbdvm"]
-bg_color = Color(0.337255, 0.67451, 1, 1)
+bg_color = Color(0.337255, 0.67451, 1, 0)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q3rjx"]
-bg_color = Color(0.160784, 0.615686, 1, 0.568627)
+bg_color = Color(0.160784, 0.615686, 1, 0)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -51,25 +51,77 @@ corner_radius_bottom_left = 10
 
 [node name="Node2D" type="Node2D"]
 
-[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
-offset_left = -649.0
-offset_top = -368.0
-offset_right = 661.0
-offset_bottom = 379.0
-stream = ExtResource("1_ghw46")
-autoplay = true
-loop = true
+[node name="YLmx3q-modified" type="Sprite2D" parent="."]
+position = Vector2(628, 477)
+scale = Vector2(1.27422, 1.39306)
+texture = ExtResource("1_8um5k")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="PlayOnline" type="Button" parent="."]
+offset_left = 363.0
+offset_top = 450.0
+offset_right = 559.0
+offset_bottom = 491.0
+theme_override_colors/font_outline_color = Color(0.168862, 3.85046e-07, 0.98201, 0.619608)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("5_df05h")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/hover = SubResource("StyleBoxFlat_cayip")
+theme_override_styles/normal = SubResource("StyleBoxFlat_158mb")
+text = "O N L I N E"
+script = ExtResource("3_df05h")
+
+[node name="PlayLocal" type="Button" parent="."]
+offset_left = 597.0
+offset_top = 450.0
+offset_right = 793.0
+offset_bottom = 491.0
+theme_override_colors/font_outline_color = Color(0.968627, 0.933333, 0, 0.619608)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("5_df05h")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/hover = SubResource("StyleBoxFlat_cayip")
+theme_override_styles/normal = SubResource("StyleBoxFlat_158mb")
+text = "L O C A L"
+script = ExtResource("3_8um5k")
+
+[node name="Options" type="Button" parent="."]
+offset_left = 365.0
+offset_top = 531.0
+offset_right = 561.0
+offset_bottom = 572.0
+theme_override_colors/font_outline_color = Color(0.625802, 4.81308e-08, 0.321785, 0.619608)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("5_df05h")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/hover = SubResource("StyleBoxFlat_jsrd8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_wwsa2")
+text = "O P T I O N S"
+
+[node name="Quit" type="Button" parent="."]
+offset_left = 599.0
+offset_top = 531.0
+offset_right = 795.0
+offset_bottom = 572.0
+theme_override_colors/font_outline_color = Color(0, 0.418413, 0.0370501, 0.619608)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("5_df05h")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/hover = SubResource("StyleBoxFlat_wbdvm")
+theme_override_styles/normal = SubResource("StyleBoxFlat_q3rjx")
+text = "Q U I T"
+script = ExtResource("4_xim88")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 441.0
-offset_bottom = 441.0
+offset_left = 469.0
+offset_top = 418.0
+offset_right = -457.0
+offset_bottom = -44.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 15
@@ -81,41 +133,22 @@ theme_override_constants/margin_bottom = 15
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="PlayOnline" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_df05h")
-theme_override_font_sizes/font_size = 20
-theme_override_styles/hover = SubResource("StyleBoxFlat_cayip")
-theme_override_styles/normal = SubResource("StyleBoxFlat_158mb")
-text = "O N L I N E"
-script = ExtResource("3_df05h")
+[node name="Label" type="Label" parent="."]
+offset_left = 55.0
+offset_top = 28.0
+offset_right = 1094.0
+offset_bottom = 437.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 8
+theme_override_constants/shadow_outline_size = 18
+theme_override_fonts/font = ExtResource("5_df05h")
+theme_override_font_sizes/font_size = 200
+text = "KINGS OF
+SPEED"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="PlayLocal" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_df05h")
-theme_override_font_sizes/font_size = 20
-theme_override_styles/hover = SubResource("StyleBoxFlat_cayip")
-theme_override_styles/normal = SubResource("StyleBoxFlat_158mb")
-text = "L O C A L"
-script = ExtResource("3_8um5k")
-
-[node name="Options" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_df05h")
-theme_override_font_sizes/font_size = 20
-theme_override_styles/hover = SubResource("StyleBoxFlat_jsrd8")
-theme_override_styles/normal = SubResource("StyleBoxFlat_wwsa2")
-text = "O P T I O N S"
-
-[node name="Quit" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_df05h")
-theme_override_font_sizes/font_size = 20
-theme_override_styles/hover = SubResource("StyleBoxFlat_wbdvm")
-theme_override_styles/normal = SubResource("StyleBoxFlat_q3rjx")
-text = "Q U I T"
-script = ExtResource("4_xim88")
-
-[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/PlayOnline" to="CanvasLayer/MarginContainer/VBoxContainer/PlayOnline" method="_on_pressed"]
-[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/PlayLocal" to="CanvasLayer/MarginContainer/VBoxContainer/PlayLocal" method="_on_pressed"]
-[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Quit" to="CanvasLayer/MarginContainer/VBoxContainer/Quit" method="_on_pressed"]
+[connection signal="pressed" from="PlayOnline" to="PlayOnline" method="_on_pressed"]
+[connection signal="pressed" from="PlayLocal" to="PlayLocal" method="_on_pressed"]
+[connection signal="pressed" from="Quit" to="Quit" method="_on_pressed"]
