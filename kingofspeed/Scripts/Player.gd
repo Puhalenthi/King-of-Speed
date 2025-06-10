@@ -28,6 +28,14 @@ var is_super_speed: bool = false
 var previous_velocity: Vector2 = Vector2.ZERO
 var was_airborne: bool = false
 
+# Boost system
+@export var max_boost: float = 100.0
+var current_boost: float = 100.0
+@export var boost_consumption_rate: float = 50.0  # Boost consumed per second
+@export var boost_speed_multiplier: float = 1.5
+var is_boosting: bool = false
+
+
 # Get the gravity from the project settings to be synced with RigidBody nodes
 var gravity: int = 1500
 
@@ -44,6 +52,7 @@ func _physics_process(delta):
 	
 	handle_gravity(delta)
 	handle_jump()
+	handle_boost(delta)
 	update_super_speed_state()
 	handle_movement(delta)
 	update_momentum_buffer()
@@ -58,16 +67,24 @@ func handle_gravity(delta):
 		velocity.y += gravity * delta
 
 func handle_jump():
-	if is_on_floor():
-		jumps = 2
 	# Handle jump input
-	if Input.is_action_just_pressed("ui_accept") and jumps > 0:
-		jumps -= 1
+	if Input.is_action_just_pressed("jump") and jumps > 0:
 		velocity.y = jump_velocity
+
+
+func handle_boost(delta):
+	# Check if boost input is pressed and we have boost available
+	is_boosting = Input.is_action_pressed("boost") and current_boost > 0
+	
+	if is_boosting:
+		# Consume boost (no regeneration)
+		current_boost -= boost_consumption_rate * delta
+		print("BOOSTING: " + str(current_boost))
+		current_boost = max(current_boost, 0.0)
 
 func handle_movement(delta):
 	# Get input direction
-	var direction = Input.get_axis("ui_left", "ui_right")
+	var direction = Input.get_axis("move_left", "move_right")
 	
 	# Update facing direction and flip sprite
 	if direction > 0:
@@ -78,8 +95,13 @@ func handle_movement(delta):
 		sprite.flip_h = true
 	
 	if direction != 0:
+		# Calculate effective speed with boost multiplier
+		var effective_speed = speed
+		if is_boosting:
+			effective_speed *= boost_speed_multiplier
+		
 		# Apply acceleration when moving
-		velocity.x = move_toward(velocity.x, direction * speed, acceleration * delta)
+		velocity.x = move_toward(velocity.x, direction * effective_speed, acceleration * delta)
 	else:
 		# Handle friction based on super speed state
 		if is_on_floor():
@@ -154,14 +176,10 @@ func handle_downslope_sliding(input_direction):
 	
 	# Check if player is facing the same direction as the downslope
 	var player_direction = 1 if facing_right else -1
-	
-	#if player_direction == slope_direction:
-		# Use momentum buffer for transfer instead of current velocity.y
-	#	transferMomentum(player_direction)
 
 # Helper functions for extended functionality
 func get_movement_direction() -> float:
-	return Input.get_axis("ui_left", "ui_right")
+	return Input.get_axis("move_left", "move_right")
 
 func is_moving() -> bool:
 	return abs(velocity.x) > 1.0
@@ -180,6 +198,15 @@ func get_momentum_buffer() -> float:
 
 func is_in_super_speed() -> bool:
 	return is_super_speed
+
+func get_boost_percentage() -> float:
+	return (current_boost / max_boost) * 100.0
+
+func get_current_boost() -> float:
+	return current_boost
+
+func is_boost_active() -> bool:
+	return is_boosting
 
 # Optional: Add sound/animation triggers
 func _on_landed():
