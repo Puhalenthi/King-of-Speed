@@ -132,7 +132,10 @@ func handle_gravity(delta):
 
 func handle_jump():
 	# Handle jump input
+	if is_on_floor():
+		jumps = 2
 	if Input.is_action_just_pressed("jump") and jumps > 0:
+		jumps -= 1
 		velocity.y = jump_velocity
 
 func handle_boost(delta):
