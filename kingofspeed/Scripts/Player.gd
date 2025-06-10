@@ -1,5 +1,17 @@
 extends CharacterBody2D
 
+# Player State System
+enum PlayerState {
+	IDLE,
+	RUNNING,
+	FALLING,
+	SUPERSPEED_FALLING,
+	SUPERSPEED_GROUND
+}
+
+var current_state: PlayerState = PlayerState.IDLE
+var previous_state: PlayerState = PlayerState.IDLE
+
 # Movement variables
 @export var speed: float = 800.0
 @export var jump_velocity: float = -600.0
@@ -17,12 +29,11 @@ var facing_right: bool = true
 
 # Momentum buffer system
 var momentum_buffer: float = 0.0
-@export var momentum_decay_rate: float = 0.95  # How quickly momentum decays when not falling
+@export var momentum_decay_rate: float = 0.95
 
 # Super speed state
 @export var super_speed_threshold: float = 800.0
-@export var super_speed_friction: float = 200.0  # Reduced friction when in super speed
-var is_super_speed: bool = false
+@export var super_speed_friction: float = 200.0
 
 # Ground penetration detection
 var previous_velocity: Vector2 = Vector2.ZERO
@@ -31,10 +42,9 @@ var was_airborne: bool = false
 # Boost system
 @export var max_boost: float = 100.0
 var current_boost: float = 100.0
-@export var boost_consumption_rate: float = 50.0  # Boost consumed per second
+@export var boost_consumption_rate: float = 50.0
 @export var boost_speed_multiplier: float = 1.5
 var is_boosting: bool = false
-
 
 # Get the gravity from the project settings to be synced with RigidBody nodes
 var gravity: int = 1500
@@ -53,13 +63,67 @@ func _physics_process(delta):
 	handle_gravity(delta)
 	handle_jump()
 	handle_boost(delta)
-	update_super_speed_state()
+	update_player_state()
 	handle_movement(delta)
 	update_momentum_buffer()
 	move_and_slide()
 	
 	# Fix ground penetration after move_and_slide()
 	handle_ground_penetration()
+	
+	# Update state after physics
+	previous_state = current_state
+
+func update_player_state():
+	var new_state: PlayerState
+	var is_moving = abs(velocity.x) > 1.0
+	var is_super_speed = abs(velocity.x) >= super_speed_threshold
+	var is_grounded = is_on_floor()
+	
+	if is_grounded:
+		if is_super_speed:
+			new_state = PlayerState.SUPERSPEED_GROUND
+		elif is_moving:
+			new_state = PlayerState.RUNNING
+		else:
+			new_state = PlayerState.IDLE
+	else:
+		if is_super_speed:
+			new_state = PlayerState.SUPERSPEED_FALLING
+		else:
+			new_state = PlayerState.FALLING
+	
+	# Handle state transitions
+	if new_state != current_state:
+		_on_state_exit(current_state)
+		current_state = new_state
+		_on_state_enter(current_state)
+
+func _on_state_enter(state: PlayerState):
+	match state:
+		PlayerState.IDLE:
+			pass
+		PlayerState.RUNNING:
+			pass
+		PlayerState.FALLING:
+			pass
+		PlayerState.SUPERSPEED_FALLING:
+			pass
+		PlayerState.SUPERSPEED_GROUND:
+			pass
+
+func _on_state_exit(state: PlayerState):
+	match state:
+		PlayerState.IDLE:
+			pass
+		PlayerState.RUNNING:
+			pass
+		PlayerState.FALLING:
+			pass
+		PlayerState.SUPERSPEED_FALLING:
+			pass
+		PlayerState.SUPERSPEED_GROUND:
+			pass
 
 func handle_gravity(delta):
 	# Add gravity when not on floor
@@ -68,9 +132,11 @@ func handle_gravity(delta):
 
 func handle_jump():
 	# Handle jump input
+	if is_on_floor():
+		jumps = 2
 	if Input.is_action_just_pressed("jump") and jumps > 0:
+		jumps -= 1
 		velocity.y = jump_velocity
-
 
 func handle_boost(delta):
 	# Check if boost input is pressed and we have boost available
@@ -103,23 +169,33 @@ func handle_movement(delta):
 		# Apply acceleration when moving
 		velocity.x = move_toward(velocity.x, direction * effective_speed, acceleration * delta)
 	else:
-		# Handle friction based on super speed state
+		# Handle friction based on current state
 		if is_on_floor():
-			var friction_to_use = super_speed_friction if is_super_speed else friction
+			var friction_to_use = get_current_friction()
 			velocity.x = move_toward(velocity.x, 0, friction_to_use * delta)
 		else:
 			# Reduced air friction
-			var air_friction = (super_speed_friction if is_super_speed else friction) * 0.3
+			var air_friction = get_current_friction() * 0.3
 			velocity.x = move_toward(velocity.x, 0, air_friction * delta)
 	
-	# Handle slope stopping - only when not in super speed state
-	if is_on_floor() and direction == 0 and not is_super_speed:
+	# Handle slope stopping - only when not in super speed states
+	if is_on_floor() and direction == 0 and not is_super_speed_state():
 		var floor_normal = get_floor_normal()
 		if floor_normal != Vector2.UP and abs(velocity.x) < slope_stop_min_velocity:
 			velocity.x = 0
 	
 	# Downslope sliding mechanic
 	handle_downslope_sliding(direction)
+
+func get_current_friction() -> float:
+	match current_state:
+		PlayerState.SUPERSPEED_FALLING, PlayerState.SUPERSPEED_GROUND:
+			return super_speed_friction
+		_:
+			return friction
+
+func is_super_speed_state() -> bool:
+	return current_state == PlayerState.SUPERSPEED_FALLING or current_state == PlayerState.SUPERSPEED_GROUND
 
 func handle_ground_penetration():
 	# Check if we just landed from being airborne
@@ -135,15 +211,6 @@ func handle_ground_penetration():
 			
 			# Optional: Add a small upward nudge to prevent getting stuck
 			position.y -= 2
-
-func update_super_speed_state():
-	# Enter super speed state when velocity exceeds threshold
-	if abs(velocity.x) >= super_speed_threshold:
-		is_super_speed = true
-	
-	# Exit super speed state when velocity drops below threshold
-	if abs(velocity.x) < super_speed_threshold:
-		is_super_speed = false
 
 func update_momentum_buffer():
 	# Track the highest downward velocity achieved
@@ -182,10 +249,10 @@ func get_movement_direction() -> float:
 	return Input.get_axis("move_left", "move_right")
 
 func is_moving() -> bool:
-	return abs(velocity.x) > 1.0
+	return current_state == PlayerState.RUNNING or current_state == PlayerState.SUPERSPEED_GROUND
 
 func is_falling() -> bool:
-	return velocity.y > 0 and not is_on_floor()
+	return current_state == PlayerState.FALLING or current_state == PlayerState.SUPERSPEED_FALLING
 
 func is_facing_right() -> bool:
 	return facing_right
@@ -197,7 +264,7 @@ func get_momentum_buffer() -> float:
 	return momentum_buffer
 
 func is_in_super_speed() -> bool:
-	return is_super_speed
+	return is_super_speed_state()
 
 func get_boost_percentage() -> float:
 	return (current_boost / max_boost) * 100.0
@@ -208,7 +275,38 @@ func get_current_boost() -> float:
 func is_boost_active() -> bool:
 	return is_boosting
 
-# Optional: Add sound/animation triggers
+# State-specific helper functions
+func is_idle() -> bool:
+	return current_state == PlayerState.IDLE
+
+func is_running() -> bool:
+	return current_state == PlayerState.RUNNING
+
+func is_grounded() -> bool:
+	return current_state == PlayerState.IDLE or current_state == PlayerState.RUNNING or current_state == PlayerState.SUPERSPEED_GROUND
+
+func get_current_state() -> PlayerState:
+	return current_state
+
+func get_previous_state() -> PlayerState:
+	return previous_state
+
+func get_state_name() -> String:
+	match current_state:
+		PlayerState.IDLE:
+			return "IDLE"
+		PlayerState.RUNNING:
+			return "RUNNING"
+		PlayerState.FALLING:
+			return "FALLING"
+		PlayerState.SUPERSPEED_FALLING:
+			return "SUPERSPEED_FALLING"
+		PlayerState.SUPERSPEED_GROUND:
+			return "SUPERSPEED_GROUND"
+		_:
+			return "UNKNOWN"
+
+# Optional: Add sound/animation triggers based on state changes
 func _on_landed():
 	# Called when landing - useful for sound effects or animations
 	pass
