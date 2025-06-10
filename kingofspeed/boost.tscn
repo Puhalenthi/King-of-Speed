@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://yfd2mque3dwe"]
+
+[ext_resource type="Texture2D" uid="uid://ba24ajgdmqr3e" path="res://thing.png" id="1_hnf4g"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = 245.0
+offset_top = 392.0
+offset_right = 682.0
+offset_bottom = 466.0
+value = 40.0
+rounded = true
+show_percentage = false
+
+[node name="Thing" type="Sprite2D" parent="."]
+position = Vector2(475, 258)
+texture = ExtResource("1_hnf4g")
