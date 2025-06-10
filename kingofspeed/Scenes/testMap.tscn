@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cfb1po5piou2r"]
 
-[ext_resource type="PackedScene" uid="uid://m4440o4jhv4t" path="res://Scenes/Player.tscn" id="1_enll3"]
+[ext_resource type="PackedScene" uid="uid://m4440o4jhv4t" path="res://Scenes/player.tscn" id="1_enll3"]
 [ext_resource type="Texture2D" uid="uid://bv3mvrssxuggr" path="res://Images/spritesheet-Photoroom.png" id="2_1kuu2"]
 [ext_resource type="PackedScene" uid="uid://bp2c1440kuuft" path="res://Scenes/LeftSlope.tscn" id="3_c0d6t"]
 [ext_resource type="PackedScene" uid="uid://2sav6y5ymn54" path="res://Scenes/RightSlope.tscn" id="4_dj4tb"]
