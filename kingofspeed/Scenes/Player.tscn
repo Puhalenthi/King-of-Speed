@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://m4440o4jhv4t"]
 
 [ext_resource type="Script" uid="uid://d0v2anfpprdpg" path="res://Scripts/Player.gd" id="1_rpqav"]
-[ext_resource type="Texture2D" uid="uid://k4es1jdu27gl" path="res://Images/arrow.png" id="2_kyqiw"]
+[ext_resource type="Texture2D" uid="uid://ducytp0tyuvhy" path="res://Images/Subject.png" id="2_cvnsp"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_qbkls"]
 
@@ -14,6 +14,7 @@ size = Vector2(20, 32)
 script = ExtResource("1_rpqav")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="CharacterBody2D"]
+visible = false
 scale = Vector2(20, 32)
 mesh = SubResource("BoxMesh_qbkls")
 
@@ -24,5 +25,6 @@ shape = SubResource("RectangleShape2D_cvnsp")
 zoom = Vector2(0.7, 0.7)
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-scale = Vector2(0.0264484, 0.043379)
-texture = ExtResource("2_kyqiw")
+position = Vector2(0.49948, 5.24456)
+scale = Vector2(-0.0997492, 0.0559336)
+texture = ExtResource("2_cvnsp")
