@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c16n32jgnvmyk"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_7fsfs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yqeas"]
+size = Vector2(20, 2)
+
+[node name="GrappleArea" type="Area2D" groups=["grapplearea"]]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+position = Vector2(-4.76837e-07, -2.98023e-08)
+scale = Vector2(20, 2)
+mesh = SubResource("QuadMesh_7fsfs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_yqeas")

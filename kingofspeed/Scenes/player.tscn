@@ -542,6 +542,7 @@ animations = [{
 script = ExtResource("1_rpqav")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="CharacterBody2D"]
+visible = false
 scale = Vector2(20, 32)
 mesh = SubResource("BoxMesh_qbkls")
 
@@ -552,6 +553,7 @@ shape = SubResource("RectangleShape2D_cvnsp")
 zoom = Vector2(0.7, 0.7)
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+
 scale = Vector2(0.0264484, 0.043379)
 texture = ExtResource("2_kyqiw")
 
@@ -562,3 +564,4 @@ sprite_frames = SubResource("SpriteFrames_w4w4b")
 animation = &"wall jump"
 frame = 7
 frame_progress = 1.0
+
