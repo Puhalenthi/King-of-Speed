@@ -4,11 +4,14 @@ var button_type = null
 
 @onready var online_menu = $CanvasLayer
 @onready var address_entry = $CanvasLayer/AddressEntry
+@onready var username_entry = $CanvasLayer/Username
 
 const Player = preload("res://Scenes/player.tscn")
 const PORT: int = 9999
+
 var enet_peer = ENetMultiplayerPeer.new()
-var nonlocal = false
+
+var nonlocal = true
 
 func _ready():
 	# initial fade-in
@@ -30,7 +33,6 @@ func _on_timer_2_timeout() -> void:
 
 func _on_host_button_pressed() -> void:
 	online_menu.hide()
-	
 	enet_peer.create_server(PORT)
 	multiplayer.multiplayer_peer = enet_peer
 	multiplayer.peer_connected.connect(add_player)
@@ -43,13 +45,14 @@ func _on_host_button_pressed() -> void:
 
 func _on_join_button_pressed() -> void:
 	online_menu.hide()
-	if address_entry.text == "":
-		enet_peer.create_client("localhost", PORT)
-	enet_peer.create_client(address_entry.text, PORT)
+	var host_addr = address_entry.text.strip_edges()
+	if host_addr == "":
+		host_addr = "localhost"
+	enet_peer.create_client(host_addr, PORT)
 	multiplayer.multiplayer_peer = enet_peer
-
 	multiplayer.connected_to_server.connect(_on_connection_succeeded)
 	multiplayer.peer_connected.connect(add_player)
+	multiplayer.peer_disconnected.connect(remove_player)
 
 func _on_connection_succeeded() -> void:
 	add_player(multiplayer.get_unique_id())
@@ -59,6 +62,13 @@ func add_player(peer_id: int) -> void:
 	player.name = str(peer_id)
 	add_child(player)
 	player.set_multiplayer_authority(peer_id)
+	if not player.is_multiplayer_authority():
+		return
+	var entered = username_entry.text.strip_edges()
+	if entered == "":
+		entered = "Player " + str(peer_id)
+	var name_label = player.get_node("CharacterBody2D/UsernameLabel") as Label
+	name_label.text = entered
 
 func remove_player(peer_id):
 	var player = get_node_or_null(str(peer_id))
@@ -81,6 +91,6 @@ func upnp_setup():
 		
 	print("Success! Join Address: %s" % upnp.query_external_address())
 
-# when matous adds a UPNP checkbox to the menu
-# func _on_check_button_toggled(toggled_on):
-	# nonlocal = not(nonlocal)
+
+func _on_check_button_toggled(toggled_on):
+	nonlocal = not(nonlocal)

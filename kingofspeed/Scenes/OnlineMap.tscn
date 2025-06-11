@@ -340,9 +340,9 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_mhoa1")
 text = "Join"
 
 [node name="AddressEntry" type="LineEdit" parent="CanvasLayer"]
-offset_left = 455.0
+offset_left = 591.0
 offset_top = 479.0
-offset_right = 713.0
+offset_right = 849.0
 offset_bottom = 528.0
 theme_override_colors/font_outline_color = Color(0.282353, 0.0509804, 0.447059, 1)
 theme_override_constants/outline_size = 8
@@ -350,6 +350,19 @@ theme_override_fonts/font = ExtResource("3_mebwe")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_7u73u")
 placeholder_text = "Enter IP Address"
+alignment = 1
+
+[node name="Username" type="LineEdit" parent="CanvasLayer"]
+offset_left = 319.0
+offset_top = 478.0
+offset_right = 577.0
+offset_bottom = 527.0
+theme_override_colors/font_outline_color = Color(0.282353, 0.0509804, 0.447059, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("3_mebwe")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_7u73u")
+placeholder_text = "Enter Username"
 alignment = 1
 
 [node name="BackToMain" type="Button" parent="CanvasLayer"]
@@ -365,6 +378,23 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_5q4l3")
 theme_override_styles/normal = SubResource("StyleBoxFlat_kdake")
 text = "Back to Main Menu"
 script = ExtResource("4_hw5ll")
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 997.0
+offset_top = 519.0
+offset_right = 1066.0
+offset_bottom = 555.0
+theme_override_colors/font_outline_color = Color(0.286275, 0.054902, 0.447059, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("3_mebwe")
+theme_override_font_sizes/font_size = 35
+text = "UPNP:"
+
+[node name="CheckButton" type="CheckButton" parent="CanvasLayer"]
+offset_left = 1008.0
+offset_top = 550.0
+offset_right = 1052.0
+offset_bottom = 574.0
 
 [node name="Poop2" type="Sprite2D" parent="CanvasLayer"]
 position = Vector2(572, 237)
@@ -436,5 +466,6 @@ spawn_path = NodePath("..")
 [connection signal="mouse_exited" from="CanvasLayer/BackToMain" to="CanvasLayer/ColorRect3" method="_on_back_to_main_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/BackToMain" to="." method="_on_back_to_main_pressed"]
 [connection signal="pressed" from="CanvasLayer/BackToMain" to="CanvasLayer/BackToMain" method="_on_pressed"]
+[connection signal="toggled" from="CanvasLayer/CheckButton" to="." method="_on_check_button_toggled"]
 [connection signal="timeout" from="CanvasLayer/fade/Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="CanvasLayer/fade2/Timer2" to="." method="_on_timer_2_timeout"]
