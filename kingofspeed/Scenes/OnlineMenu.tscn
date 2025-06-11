@@ -127,7 +127,7 @@ length = 0.19
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect2:position")
+tracks/0/path = NodePath("CanvasLayer/ColorRect2:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -139,7 +139,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("ColorRect2:scale")
+tracks/1/path = NodePath("CanvasLayer/ColorRect2:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -155,7 +155,7 @@ length = 0.19
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect2:scale")
+tracks/0/path = NodePath("CanvasLayer/ColorRect2:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -167,7 +167,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("ColorRect2:position")
+tracks/1/path = NodePath("CanvasLayer/ColorRect2:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -182,7 +182,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect2:position")
+tracks/0/path = NodePath("CanvasLayer/ColorRect2:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -194,7 +194,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("ColorRect2:scale")
+tracks/1/path = NodePath("CanvasLayer/ColorRect2:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -304,13 +304,15 @@ _data = {
 [node name="OnlineMenu" type="Node2D"]
 script = ExtResource("1_cgf1d")
 
-[node name="Image(2)" type="Sprite2D" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Image(2)" type="Sprite2D" parent="CanvasLayer"]
 modulate = Color(1, 1, 1, 0.780392)
 position = Vector2(581.5, 329)
 scale = Vector2(0.907031, 0.908333)
 texture = ExtResource("1_2u5t0")
 
-[node name="HostButton" type="Button" parent="."]
+[node name="HostButton" type="Button" parent="CanvasLayer"]
 offset_left = 498.0
 offset_top = 424.0
 offset_right = 576.0
@@ -323,7 +325,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_3ani7")
 theme_override_styles/normal = SubResource("StyleBoxFlat_6wiph")
 text = "Host"
 
-[node name="JoinButton" type="Button" parent="."]
+[node name="JoinButton" type="Button" parent="CanvasLayer"]
 offset_left = 622.0
 offset_top = 424.0
 offset_right = 693.0
@@ -336,7 +338,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_2u5t0")
 theme_override_styles/normal = SubResource("StyleBoxFlat_mhoa1")
 text = "Join"
 
-[node name="AddressEntry" type="LineEdit" parent="."]
+[node name="AddressEntry" type="LineEdit" parent="CanvasLayer"]
 offset_left = 455.0
 offset_top = 479.0
 offset_right = 713.0
@@ -349,7 +351,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_7u73u")
 placeholder_text = "Enter IP Address"
 alignment = 1
 
-[node name="BackToMain" type="Button" parent="."]
+[node name="BackToMain" type="Button" parent="CanvasLayer"]
 offset_left = 447.0
 offset_top = 535.0
 offset_right = 725.0
@@ -363,12 +365,12 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_kdake")
 text = "Back to Main Menu"
 script = ExtResource("1_d0d6v")
 
-[node name="Poop2" type="Sprite2D" parent="."]
+[node name="Poop2" type="Sprite2D" parent="CanvasLayer"]
 position = Vector2(572, 237)
 scale = Vector2(0.451, 0.39)
 texture = ExtResource("3_6wiph")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 offset_left = 472.0
 offset_top = 440.0
 offset_right = 484.0
@@ -376,12 +378,12 @@ offset_bottom = 452.0
 color = Color(0.772549, 0.560784, 0.956863, 1)
 script = ExtResource("5_mhoa1")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/ColorRect"]
 libraries = {
 &"": SubResource("AnimationLibrary_7u73u")
 }
 
-[node name="ColorRect2" type="ColorRect" parent="."]
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer"]
 offset_left = 601.0
 offset_top = 439.0
 offset_right = 613.0
@@ -389,13 +391,13 @@ offset_bottom = 452.0
 color = Color(0.772549, 0.560784, 0.956863, 1)
 script = ExtResource("6_7u73u")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect2"]
-root_node = NodePath("../..")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/ColorRect2"]
+root_node = NodePath("../../..")
 libraries = {
 &"": SubResource("AnimationLibrary_cgf1d")
 }
 
-[node name="ColorRect3" type="ColorRect" parent="."]
+[node name="ColorRect3" type="ColorRect" parent="CanvasLayer"]
 offset_left = 427.0
 offset_top = 552.0
 offset_right = 437.0
@@ -403,27 +405,27 @@ offset_bottom = 563.0
 color = Color(0.772549, 0.560784, 0.956863, 1)
 script = ExtResource("7_5q4l3")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect3"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/ColorRect3"]
 libraries = {
 &"": SubResource("AnimationLibrary_ht1ox")
 }
 
-[node name="fade" parent="." instance=ExtResource("1_kdake")]
+[node name="fade" parent="CanvasLayer" instance=ExtResource("1_kdake")]
 
-[node name="Timer" type="Timer" parent="fade"]
+[node name="Timer" type="Timer" parent="CanvasLayer/fade"]
 
-[node name="fade2" parent="." instance=ExtResource("1_kdake")]
+[node name="fade2" parent="CanvasLayer" instance=ExtResource("1_kdake")]
 visible = false
 
-[node name="Timer2" type="Timer" parent="fade2"]
+[node name="Timer2" type="Timer" parent="CanvasLayer/fade2"]
 
-[connection signal="mouse_entered" from="HostButton" to="ColorRect" method="_on_host_button_mouse_entered"]
-[connection signal="mouse_exited" from="HostButton" to="ColorRect" method="_on_host_button_mouse_exited"]
-[connection signal="mouse_entered" from="JoinButton" to="ColorRect2" method="_on_join_button_mouse_entered"]
-[connection signal="mouse_exited" from="JoinButton" to="ColorRect2" method="_on_join_button_mouse_exited"]
-[connection signal="mouse_entered" from="BackToMain" to="ColorRect3" method="_on_back_to_main_mouse_entered"]
-[connection signal="mouse_exited" from="BackToMain" to="ColorRect3" method="_on_back_to_main_mouse_exited"]
-[connection signal="pressed" from="BackToMain" to="." method="_on_back_to_main_pressed"]
-[connection signal="pressed" from="BackToMain" to="BackToMain" method="_on_pressed"]
-[connection signal="timeout" from="fade/Timer" to="." method="_on_timer_timeout"]
-[connection signal="timeout" from="fade2/Timer2" to="." method="_on_timer_2_timeout"]
+[connection signal="mouse_entered" from="CanvasLayer/HostButton" to="CanvasLayer/ColorRect" method="_on_host_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/HostButton" to="CanvasLayer/ColorRect" method="_on_host_button_mouse_exited"]
+[connection signal="mouse_entered" from="CanvasLayer/JoinButton" to="CanvasLayer/ColorRect2" method="_on_join_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/JoinButton" to="CanvasLayer/ColorRect2" method="_on_join_button_mouse_exited"]
+[connection signal="mouse_entered" from="CanvasLayer/BackToMain" to="CanvasLayer/ColorRect3" method="_on_back_to_main_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/BackToMain" to="CanvasLayer/ColorRect3" method="_on_back_to_main_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/BackToMain" to="." method="_on_back_to_main_pressed"]
+[connection signal="pressed" from="CanvasLayer/BackToMain" to="CanvasLayer/BackToMain" method="_on_pressed"]
+[connection signal="timeout" from="CanvasLayer/fade/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="CanvasLayer/fade2/Timer2" to="." method="_on_timer_2_timeout"]

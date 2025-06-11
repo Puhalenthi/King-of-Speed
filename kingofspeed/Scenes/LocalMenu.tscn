@@ -21,13 +21,15 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [node name="LocalMenu" type="Node2D"]
 script = ExtResource("1_11h3y")
 
-[node name="Image(2)" type="Sprite2D" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Image(2)" type="Sprite2D" parent="CanvasLayer"]
 modulate = Color(1, 1, 1, 0.780392)
 position = Vector2(581.5, 329)
 scale = Vector2(0.907031, 0.908333)
 texture = ExtResource("1_bp7d8")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="CanvasLayer"]
 offset_left = 399.0
 offset_top = 189.0
 offset_right = 740.0
@@ -42,7 +44,7 @@ text = "Player 1 Username"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LocalUsername1" type="LineEdit" parent="."]
+[node name="LocalUsername1" type="LineEdit" parent="CanvasLayer"]
 offset_left = 475.0
 offset_top = 247.0
 offset_right = 651.0
@@ -55,7 +57,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_wlrml")
 placeholder_text = "Username:"
 alignment = 1
 
-[node name="Label2" type="Label" parent="."]
+[node name="Label2" type="Label" parent="CanvasLayer"]
 offset_left = 396.0
 offset_top = 337.0
 offset_right = 743.0
@@ -70,7 +72,7 @@ text = "Player 2 Username"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LocalUsername2" type="LineEdit" parent="."]
+[node name="LocalUsername2" type="LineEdit" parent="CanvasLayer"]
 offset_left = 469.0
 offset_top = 396.0
 offset_right = 660.0
@@ -83,7 +85,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_bp7d8")
 placeholder_text = "Username:"
 alignment = 1
 
-[node name="BackToMain" type="Button" parent="."]
+[node name="BackToMain" type="Button" parent="CanvasLayer"]
 offset_left = 464.0
 offset_top = 544.0
 offset_right = 666.0
@@ -97,16 +99,16 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_11h3y")
 text = "Back to Main Menu"
 script = ExtResource("1_gug4c")
 
-[node name="Lfade" parent="." instance=ExtResource("4_0fwj7")]
+[node name="Lfade" parent="CanvasLayer" instance=ExtResource("4_0fwj7")]
 
-[node name="Ltimer" type="Timer" parent="Lfade"]
+[node name="Ltimer" type="Timer" parent="CanvasLayer/Lfade"]
 
-[node name="LLfade" parent="." instance=ExtResource("4_0fwj7")]
+[node name="LLfade" parent="CanvasLayer" instance=ExtResource("4_0fwj7")]
 visible = false
 
-[node name="LLtimer" type="Timer" parent="LLfade"]
+[node name="LLtimer" type="Timer" parent="CanvasLayer/LLfade"]
 
-[connection signal="pressed" from="BackToMain" to="." method="_on_back_to_main_pressed"]
-[connection signal="pressed" from="BackToMain" to="BackToMain" method="_on_pressed"]
-[connection signal="timeout" from="Lfade/Ltimer" to="." method="_on_ltimer_timeout"]
-[connection signal="timeout" from="LLfade/LLtimer" to="." method="_on_l_ltimer_timeout"]
+[connection signal="pressed" from="CanvasLayer/BackToMain" to="." method="_on_back_to_main_pressed"]
+[connection signal="pressed" from="CanvasLayer/BackToMain" to="CanvasLayer/BackToMain" method="_on_pressed"]
+[connection signal="timeout" from="CanvasLayer/Lfade/Ltimer" to="." method="_on_ltimer_timeout"]
+[connection signal="timeout" from="CanvasLayer/LLfade/LLtimer" to="." method="_on_l_ltimer_timeout"]
