@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://2d3kes4tduu3"]
+[gd_scene load_steps=7 format=3 uid="uid://2d3kes4tduu3"]
 
 [ext_resource type="PackedScene" uid="uid://b3e36i25yx11u" path="res://Scenes/player.tscn" id="1_3jd7s"]
 [ext_resource type="Script" uid="uid://bu56a3bk5kdhk" path="res://Scripts/levelCamera.gd" id="1_kho38"]
 [ext_resource type="TileSet" uid="uid://c8skhbmqarkk3" path="res://Sprites/Map/groundtiles.tres" id="2_kho38"]
+[ext_resource type="PackedScene" uid="uid://bp2c1440kuuft" path="res://Scenes/LeftSlope.tscn" id="4_h8s3q"]
+[ext_resource type="PackedScene" uid="uid://2sav6y5ymn54" path="res://Scenes/RightSlope.tscn" id="5_v4y1o"]
+[ext_resource type="PackedScene" uid="uid://bxeygcgan3ecm" path="res://Scenes/checkpoint.tscn" id="6_v4y1o"]
 
 [node name="WaitingArea" type="Node2D"]
 script = ExtResource("1_kho38")
@@ -32,6 +35,62 @@ ignore_rotation = false
 zoom = Vector2(0.7, 0.7)
 position_smoothing_enabled = true
 drag_horizontal_offset = 1.0
+
+[node name="LeftSlope" parent="." instance=ExtResource("4_h8s3q")]
+position = Vector2(815, 823)
+scale = Vector2(3.64, 3.71856)
+
+[node name="LeftSlope2" parent="." instance=ExtResource("4_h8s3q")]
+position = Vector2(124, 1621)
+scale = Vector2(3.64, 3.71856)
+
+[node name="LeftSlope3" parent="." instance=ExtResource("4_h8s3q")]
+position = Vector2(-1725, 3416)
+scale = Vector2(3.92, 4.19856)
+
+[node name="RightSlope" parent="." instance=ExtResource("5_v4y1o")]
+position = Vector2(-1060, 1688)
+scale = Vector2(3.64, 3.71856)
+
+[node name="checkpoint" parent="." instance=ExtResource("6_v4y1o")]
+position = Vector2(642, 4)
+scale = Vector2(1, 5.76)
+
+[node name="checkpoint2" parent="." instance=ExtResource("6_v4y1o")]
+position = Vector2(-1464, 1054)
+scale = Vector2(1, 12.48)
+
+[node name="checkpoint3" parent="." instance=ExtResource("6_v4y1o")]
+position = Vector2(-2217, 3406)
+scale = Vector2(1, 4.72001)
+
+[node name="checkpoint4" parent="." instance=ExtResource("6_v4y1o")]
+position = Vector2(-4294, 2906)
+scale = Vector2(1, 4.72001)
+
+[node name="checkpoint5" parent="." instance=ExtResource("6_v4y1o")]
+position = Vector2(-3531, 2411)
+scale = Vector2(1, 4.72001)
+
+[node name="checkpoint6" parent="." instance=ExtResource("6_v4y1o")]
+position = Vector2(-3090, 1898)
+scale = Vector2(1, 4.72001)
+
+[node name="checkpoint7" parent="." instance=ExtResource("6_v4y1o")]
+position = Vector2(-3737, 1397)
+scale = Vector2(1, 4.72001)
+
+[node name="checkpoint8" parent="." instance=ExtResource("6_v4y1o")]
+position = Vector2(-3011, 906)
+scale = Vector2(1, 4.72001)
+
+[node name="checkpoint9" parent="." instance=ExtResource("6_v4y1o")]
+position = Vector2(-4255, 408)
+scale = Vector2(1, 4.72001)
+
+[node name="checkpoint10" parent="." instance=ExtResource("6_v4y1o")]
+position = Vector2(-2421, -539)
+scale = Vector2(1, 4.72001)
 
 [editable path="Player"]
 [editable path="Player2"]
