@@ -1,14 +1,15 @@
-[gd_scene load_steps=29 format=3 uid="uid://d26ifd4nga5eu"]
+[gd_scene load_steps=30 format=3 uid="uid://d26ifd4nga5eu"]
 
-[ext_resource type="Texture2D" uid="uid://dix63h2yho0yb" path="res://Images/image (2).png" id="1_2u5t0"]
-[ext_resource type="FontFile" uid="uid://q4s1an2fkmo4" path="res://Pixel Game.otf" id="1_3ani7"]
-[ext_resource type="Script" uid="uid://b8rcjhtyrerht" path="res://Scenes/online_menu.gd" id="1_cgf1d"]
-[ext_resource type="Script" uid="uid://wyq2rb1orde3" path="res://Scripts/BackToMain.gd" id="1_d0d6v"]
-[ext_resource type="PackedScene" uid="uid://x367r2ypk5m4" path="res://Scenes/color_rect.tscn" id="1_kdake"]
-[ext_resource type="Texture2D" uid="uid://bi8apwat1hb4t" path="res://Images/poop2.png" id="3_6wiph"]
-[ext_resource type="Script" uid="uid://bhphx8ltgcrse" path="res://Scenes/color_rect.gd" id="5_mhoa1"]
-[ext_resource type="Script" uid="uid://cakpm7hgud47e" path="res://Scenes/2222222.gd" id="6_7u73u"]
-[ext_resource type="Script" uid="uid://df7uiyeodrp64" path="res://Scenes/33.gd" id="7_5q4l3"]
+[ext_resource type="Script" uid="uid://b8rcjhtyrerht" path="res://Scenes/online_map.gd" id="1_lrc77"]
+[ext_resource type="Texture2D" uid="uid://dix63h2yho0yb" path="res://Images/image (2).png" id="2_ovdqi"]
+[ext_resource type="FontFile" uid="uid://q4s1an2fkmo4" path="res://Pixel Game.otf" id="3_mebwe"]
+[ext_resource type="Script" uid="uid://wyq2rb1orde3" path="res://Scripts/BackToMain.gd" id="4_hw5ll"]
+[ext_resource type="Texture2D" uid="uid://bi8apwat1hb4t" path="res://Images/poop2.png" id="5_hpv2t"]
+[ext_resource type="Script" uid="uid://bhphx8ltgcrse" path="res://Scenes/color_rect.gd" id="6_58ghl"]
+[ext_resource type="Script" uid="uid://cakpm7hgud47e" path="res://Scenes/2222222.gd" id="7_xcpcn"]
+[ext_resource type="Script" uid="uid://df7uiyeodrp64" path="res://Scenes/33.gd" id="8_mbgw2"]
+[ext_resource type="PackedScene" uid="uid://x367r2ypk5m4" path="res://Scenes/color_rect.tscn" id="9_eyoeu"]
+[ext_resource type="PackedScene" uid="uid://rkmlckfyvcx7" path="res://Scenes/testMapNoPlayer.tscn" id="10_ovdqi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ani7"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -302,7 +303,7 @@ _data = {
 }
 
 [node name="OnlineMenu" type="Node2D"]
-script = ExtResource("1_cgf1d")
+script = ExtResource("1_lrc77")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -310,7 +311,7 @@ script = ExtResource("1_cgf1d")
 modulate = Color(1, 1, 1, 0.780392)
 position = Vector2(581.5, 329)
 scale = Vector2(0.907031, 0.908333)
-texture = ExtResource("1_2u5t0")
+texture = ExtResource("2_ovdqi")
 
 [node name="HostButton" type="Button" parent="CanvasLayer"]
 offset_left = 498.0
@@ -319,7 +320,7 @@ offset_right = 576.0
 offset_bottom = 473.0
 theme_override_colors/font_outline_color = Color(0.282353, 0.0509804, 0.447059, 1)
 theme_override_constants/outline_size = 8
-theme_override_fonts/font = ExtResource("1_3ani7")
+theme_override_fonts/font = ExtResource("3_mebwe")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/hover = SubResource("StyleBoxFlat_3ani7")
 theme_override_styles/normal = SubResource("StyleBoxFlat_6wiph")
@@ -332,7 +333,7 @@ offset_right = 693.0
 offset_bottom = 473.0
 theme_override_colors/font_outline_color = Color(0.282353, 0.0509804, 0.447059, 1)
 theme_override_constants/outline_size = 8
-theme_override_fonts/font = ExtResource("1_3ani7")
+theme_override_fonts/font = ExtResource("3_mebwe")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/hover = SubResource("StyleBoxFlat_2u5t0")
 theme_override_styles/normal = SubResource("StyleBoxFlat_mhoa1")
@@ -345,7 +346,7 @@ offset_right = 713.0
 offset_bottom = 528.0
 theme_override_colors/font_outline_color = Color(0.282353, 0.0509804, 0.447059, 1)
 theme_override_constants/outline_size = 8
-theme_override_fonts/font = ExtResource("1_3ani7")
+theme_override_fonts/font = ExtResource("3_mebwe")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_7u73u")
 placeholder_text = "Enter IP Address"
@@ -358,17 +359,17 @@ offset_right = 725.0
 offset_bottom = 584.0
 theme_override_colors/font_outline_color = Color(0.282353, 0.0509804, 0.447059, 1)
 theme_override_constants/outline_size = 8
-theme_override_fonts/font = ExtResource("1_3ani7")
+theme_override_fonts/font = ExtResource("3_mebwe")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/hover = SubResource("StyleBoxFlat_5q4l3")
 theme_override_styles/normal = SubResource("StyleBoxFlat_kdake")
 text = "Back to Main Menu"
-script = ExtResource("1_d0d6v")
+script = ExtResource("4_hw5ll")
 
 [node name="Poop2" type="Sprite2D" parent="CanvasLayer"]
 position = Vector2(572, 237)
 scale = Vector2(0.451, 0.39)
-texture = ExtResource("3_6wiph")
+texture = ExtResource("5_hpv2t")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 offset_left = 472.0
@@ -376,7 +377,7 @@ offset_top = 440.0
 offset_right = 484.0
 offset_bottom = 452.0
 color = Color(0.772549, 0.560784, 0.956863, 1)
-script = ExtResource("5_mhoa1")
+script = ExtResource("6_58ghl")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/ColorRect"]
 libraries = {
@@ -389,7 +390,7 @@ offset_top = 439.0
 offset_right = 613.0
 offset_bottom = 452.0
 color = Color(0.772549, 0.560784, 0.956863, 1)
-script = ExtResource("6_7u73u")
+script = ExtResource("7_xcpcn")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/ColorRect2"]
 root_node = NodePath("../../..")
@@ -403,26 +404,34 @@ offset_top = 552.0
 offset_right = 437.0
 offset_bottom = 563.0
 color = Color(0.772549, 0.560784, 0.956863, 1)
-script = ExtResource("7_5q4l3")
+script = ExtResource("8_mbgw2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/ColorRect3"]
 libraries = {
 &"": SubResource("AnimationLibrary_ht1ox")
 }
 
-[node name="fade" parent="CanvasLayer" instance=ExtResource("1_kdake")]
+[node name="fade" parent="CanvasLayer" instance=ExtResource("9_eyoeu")]
 
 [node name="Timer" type="Timer" parent="CanvasLayer/fade"]
 
-[node name="fade2" parent="CanvasLayer" instance=ExtResource("1_kdake")]
+[node name="fade2" parent="CanvasLayer" instance=ExtResource("9_eyoeu")]
 visible = false
 
 [node name="Timer2" type="Timer" parent="CanvasLayer/fade2"]
 
+[node name="TestMap" parent="." instance=ExtResource("10_ovdqi")]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://b84xvofva7ep7")
+spawn_path = NodePath("..")
+
 [connection signal="mouse_entered" from="CanvasLayer/HostButton" to="CanvasLayer/ColorRect" method="_on_host_button_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/HostButton" to="CanvasLayer/ColorRect" method="_on_host_button_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/HostButton" to="." method="_on_host_button_pressed"]
 [connection signal="mouse_entered" from="CanvasLayer/JoinButton" to="CanvasLayer/ColorRect2" method="_on_join_button_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/JoinButton" to="CanvasLayer/ColorRect2" method="_on_join_button_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/JoinButton" to="." method="_on_join_button_pressed"]
 [connection signal="mouse_entered" from="CanvasLayer/BackToMain" to="CanvasLayer/ColorRect3" method="_on_back_to_main_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/BackToMain" to="CanvasLayer/ColorRect3" method="_on_back_to_main_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/BackToMain" to="." method="_on_back_to_main_pressed"]

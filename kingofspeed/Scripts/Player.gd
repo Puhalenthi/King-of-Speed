@@ -24,6 +24,7 @@ var jumps = 2
 # Player facing direction
 var facing_right: bool = true
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var camera = $Camera2D
 
 # Slope handling
 @export var max_slope_angle: float = 50.0
@@ -66,13 +67,21 @@ var grapple_anchor_point: Vector2 = Vector2.ZERO
 # Get the gravity from the project settings to be synced with RigidBody nodes
 var gravity: int = 1500
 
+@rpc("any_peer", "call_remote", "unreliable", 0)
+func _rpc_sync_transform(pos: Vector2, vel: Vector2) -> void:
+	if not is_multiplayer_authority():
+		global_position = pos
+		velocity        = vel
+
 func _ready():
+	if not is_multiplayer_authority(): return
 	# Set up floor detection for slopes
 	floor_max_angle = deg_to_rad(max_slope_angle)
 	floor_snap_length = 8.0
 	floor_stop_on_slope = false
 
 func _physics_process(delta):
+	if not is_multiplayer_authority(): return
 	# Store previous state for ground penetration detection
 	previous_velocity = velocity
 	was_airborne = not is_on_floor()
@@ -95,6 +104,8 @@ func _physics_process(delta):
 	
 	# Update state after physics
 	previous_state = current_state
+	rpc("_rpc_sync_transform", global_position, velocity)
+
 
 func handle_grapple():
 	# Check if grapple input is being held

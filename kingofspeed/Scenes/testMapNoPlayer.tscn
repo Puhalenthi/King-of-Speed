@@ -1,13 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://cfb1po5piou2r"]
+[gd_scene load_steps=7 format=3 uid="uid://rkmlckfyvcx7"]
 
-[ext_resource type="PackedScene" uid="uid://b84xvofva7ep7" path="res://Scenes/player.tscn" id="1_enll3"]
-[ext_resource type="Texture2D" uid="uid://bv3mvrssxuggr" path="res://Images/spritesheet-Photoroom.png" id="2_1kuu2"]
-[ext_resource type="PackedScene" uid="uid://bp2c1440kuuft" path="res://Scenes/LeftSlope.tscn" id="3_c0d6t"]
-[ext_resource type="PackedScene" uid="uid://2sav6y5ymn54" path="res://Scenes/RightSlope.tscn" id="4_dj4tb"]
-[ext_resource type="PackedScene" uid="uid://c16n32jgnvmyk" path="res://Scenes/grapple_area.tscn" id="5_upetf"]
+[ext_resource type="Texture2D" uid="uid://bv3mvrssxuggr" path="res://Images/spritesheet-Photoroom.png" id="2_bfeu4"]
+[ext_resource type="PackedScene" uid="uid://bp2c1440kuuft" path="res://Scenes/LeftSlope.tscn" id="3_0bebu"]
+[ext_resource type="PackedScene" uid="uid://2sav6y5ymn54" path="res://Scenes/RightSlope.tscn" id="4_iu135"]
+[ext_resource type="PackedScene" uid="uid://c16n32jgnvmyk" path="res://Scenes/grapple_area.tscn" id="5_3cfwl"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_upetf"]
-texture = ExtResource("2_1kuu2")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fnd41"]
+texture = ExtResource("2_bfeu4")
 texture_region_size = Vector2i(100, 100)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-50.5, -49.5, 50, -50, 50, 50.5)
@@ -160,13 +159,9 @@ texture_region_size = Vector2i(100, 100)
 [sub_resource type="TileSet" id="TileSet_dj4tb"]
 tile_size = Vector2i(100, 100)
 physics_layer_0/collision_layer = 1
-sources/3 = SubResource("TileSetAtlasSource_upetf")
+sources/3 = SubResource("TileSetAtlasSource_fnd41")
 
 [node name="TestMap" type="Node2D"]
-
-[node name="Player" parent="." instance=ExtResource("1_enll3")]
-position = Vector2(0, -51)
-scale = Vector2(3, 3)
 
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2(0.9, 1)
@@ -174,28 +169,26 @@ tile_set = SubResource("TileSet_dj4tb")
 format = 2
 layer_0/tile_data = PackedInt32Array(196607, 65539, 0, 131072, 65539, 0, 131073, 65539, 0, 131074, 65539, 0, 65539, 196611, 0, 131075, 65539, 0, 131076, 65539, 0, 65540, 65539, 0, 65541, 65539, 0, 131077, 65539, 0, 65542, 262147, 0, 131078, 65539, 0, 131079, 65539, 0, 131081, 65539, 0, 131080, 65539, 0, 65546, 196611, 0, 11, 196611, 0, -65524, 196611, 0, -131059, 196611, 0, 131082, 65539, 0, 131083, 65539, 0, 65547, 65539, 0, 65548, 65539, 0, 131084, 65539, 0, 131085, 65539, 0, 65549, 65539, 0, 13, 65539, 0, -65523, 65539, 0, 12, 65539, 0, -131058, 65539, 0, -65522, 65539, 0, 14, 65539, 0, 65550, 65539, 0, 131086, 65539, 0, -393198, 65539, 0, -327662, 65539, 0, -262126, 65539, 0, -196590, 65539, 0, -131054, 65539, 0, -65518, 65539, 0, 18, 65539, 0, 65554, 65539, 0, 131090, 65539, 0, 196626, 65539, 0, -393197, 65539, 0, -327661, 65539, 0, -262125, 65539, 0, -196589, 65539, 0, -131053, 65539, 0, -65517, 65539, 0, 19, 65539, 0, 65555, 65539, 0, 131091, 65539, 0, 196627, 65539, 0, 262162, 65539, 0, 262163, 65539, 0, 327699, 65539, 0, 327698, 65539, 0, 393233, 196611, 0, 458768, 196611, 0, 524304, 65539, 0, 524305, 65539, 0, 458769, 65539, 0, 458770, 65539, 0, 393234, 65539, 0, 524306, 65539, 0, 524307, 65539, 0, 458771, 65539, 0, 393235, 65539, 0, 524303, 65539, 0, 524302, 65539, 0, 524301, 65539, 0, 524300, 65539, 0, 524299, 65539, 0, 524298, 65539, 0, 524297, 65539, 0, 524296, 65539, 0, 524295, 65539, 0, 524294, 65539, 0, 524290, 65539, 0, 524289, 65539, 0, 524288, 65539, 0, 589823, 65539, 0, 589822, 65539, 0, 589821, 65539, 0, 589820, 65539, 0, 589819, 65539, 0, 589818, 65539, 0, 524282, 262147, 0, 458745, 262147, 0, 524281, 65539, 0, 589817, 65539, 0, 589816, 65539, 0, 524280, 65539, 0, 458744, 65539, 0, 589815, 65539, 0, 524279, 65539, 0, 458743, 65539, 0, 589814, 65539, 0, 524278, 65539, 0, 458742, 65539, 0, 393206, 65539, 0, 393205, 65539, 0, 327669, 65539, 0, 327668, 65539, 0, 262132, 65539, 0, 262131, 65539, 0, 196595, 65539, 0, -65542, 65539, 0)
 
-[node name="LeftSlope" parent="." instance=ExtResource("3_c0d6t")]
+[node name="LeftSlope" parent="." instance=ExtResource("3_0bebu")]
 position = Vector2(285, 158)
 scale = Vector2(1, 1.2)
 
-[node name="LeftSlope2" parent="." instance=ExtResource("3_c0d6t")]
+[node name="LeftSlope2" parent="." instance=ExtResource("3_0bebu")]
 position = Vector2(1025, -1)
 scale = Vector2(3.5, 4)
 
-[node name="LeftSlope3" parent="." instance=ExtResource("3_c0d6t")]
+[node name="LeftSlope3" parent="." instance=ExtResource("3_0bebu")]
 position = Vector2(1476, 679)
 scale = Vector2(2.7, 2.9)
 
-[node name="RightSlope" parent="." instance=ExtResource("4_dj4tb")]
+[node name="RightSlope" parent="." instance=ExtResource("4_iu135")]
 position = Vector2(629, 169)
 scale = Vector2(1.2, 1.4)
 
-[node name="RightSlope2" parent="." instance=ExtResource("4_dj4tb")]
+[node name="RightSlope2" parent="." instance=ExtResource("4_iu135")]
 position = Vector2(-428, 748)
 scale = Vector2(2.6, 3)
 
-[node name="GrappleArea" parent="." instance=ExtResource("5_upetf")]
+[node name="GrappleArea" parent="." instance=ExtResource("5_3cfwl")]
 position = Vector2(98, 301)
 scale = Vector2(16.86, 16.84)
-
-[editable path="Player"]
