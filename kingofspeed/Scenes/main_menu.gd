@@ -22,7 +22,7 @@ func _on_play_local_pressed() -> void:
 
 func _on_timer_timeout() -> void:
 	if button_type == "online":
-		get_tree().change_scene_to_file("res://Scenes/OnlineMenu.tscn")
+		get_tree().change_scene_to_file("res://Scenes/OnlineMap.tscn")
 	if button_type == "local":
 		get_tree().change_scene_to_file("res://Scenes/LocalMenu.tscn")
 
