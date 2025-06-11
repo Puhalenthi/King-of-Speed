@@ -390,6 +390,28 @@ theme_override_fonts/font = ExtResource("3_mebwe")
 theme_override_font_sizes/font_size = 35
 text = "UPNP:"
 
+[node name="Label2" type="Label" parent="CanvasLayer"]
+offset_left = 23.0
+offset_top = 599.0
+offset_right = 122.0
+offset_bottom = 635.0
+theme_override_colors/font_outline_color = Color(0.286275, 0.054902, 0.447059, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("3_mebwe")
+theme_override_font_sizes/font_size = 35
+text = "Your IP:"
+
+[node name="CurrentIP" type="Label" parent="CanvasLayer"]
+offset_left = 127.0
+offset_top = 599.0
+offset_right = 226.0
+offset_bottom = 635.0
+theme_override_colors/font_outline_color = Color(0.286275, 0.054902, 0.447059, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("3_mebwe")
+theme_override_font_sizes/font_size = 35
+text = "Your IP:"
+
 [node name="CheckButton" type="CheckButton" parent="CanvasLayer"]
 offset_left = 1008.0
 offset_top = 550.0
@@ -442,6 +464,7 @@ libraries = {
 }
 
 [node name="fade" parent="CanvasLayer" instance=ExtResource("9_eyoeu")]
+visible = false
 
 [node name="Timer" type="Timer" parent="CanvasLayer/fade"]
 

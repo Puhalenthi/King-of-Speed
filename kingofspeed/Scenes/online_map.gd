@@ -17,6 +17,7 @@ func _ready():
 	# initial fade-in
 	$CanvasLayer/fade/Timer.start()
 	$CanvasLayer/fade/AnimationPlayer.play("fadeout")
+	$CanvasLayer/CurrentIP.text = get_local_ip()
 
 func _on_timer_timeout() -> void:
 	$CanvasLayer/fade.hide()
@@ -94,3 +95,11 @@ func upnp_setup():
 
 func _on_check_button_toggled(toggled_on):
 	nonlocal = not(nonlocal)
+
+func get_local_ip() -> String:
+	var ip_addresses = IP.get_local_addresses()
+	for ip_address in ip_addresses:
+		if ip_address.begins_with("192.168.") or ip_address.begins_with("10.") or \
+			(ip_address.begins_with("172.") and int(ip_address.split(".")[1]) >= 16 and int(ip_address.split(".")[1]) <= 31):
+			return ip_address
+	return "127.0.0.1"
