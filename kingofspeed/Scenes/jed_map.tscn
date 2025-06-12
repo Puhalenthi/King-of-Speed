@@ -1,15 +1,18 @@
-[gd_scene load_steps=11 format=3 uid="uid://dm5cgxruw742a"]
+[gd_scene load_steps=12 format=3 uid="uid://bbriny3jv2jqf"]
 
 [ext_resource type="TileSet" uid="uid://dt01ujqbvfm8d" path="res://Sprites/Map/groundtiles.tres" id="1_egtcu"]
 [ext_resource type="Script" uid="uid://bu56a3bk5kdhk" path="res://Scripts/levelCamera.gd" id="1_w2pkx"]
 [ext_resource type="PackedScene" uid="uid://b84xvofva7ep7" path="res://Scenes/player.tscn" id="2_8njdb"]
 [ext_resource type="PackedScene" path="res://Scenes/LeftSlope.tscn" id="3_t5hq7"]
 [ext_resource type="Script" uid="uid://v31tg0ojl1pw" path="res://Scripts/Player2.gd" id="4_jy8rq"]
-[ext_resource type="PackedScene" uid="uid://2sav6y5ymn54" path="res://Scenes/RightSlope.tscn" id="4_q53se"]
-[ext_resource type="PackedScene" uid="uid://by701f6tkxndf" path="res://Scenes/boostway.tscn" id="5_q53se"]
-[ext_resource type="PackedScene" uid="uid://bxeygcgan3ecm" path="res://Scenes/checkpoint.tscn" id="7_jy8rq"]
-[ext_resource type="PackedScene" uid="uid://dfbt8id0lex30" path="res://Scenes/win_screen.tscn" id="9_1li2s"]
-[ext_resource type="AudioStream" uid="uid://5gkq5vipiv55" path="res://Scenes/king of speed.mp3" id="10_vqkbv"]
+[ext_resource type="PackedScene" path="res://Scenes/RightSlope.tscn" id="4_q53se"]
+[ext_resource type="PackedScene" path="res://Scenes/boostway.tscn" id="5_q53se"]
+[ext_resource type="PackedScene" path="res://Scenes/checkpoint.tscn" id="7_jy8rq"]
+[ext_resource type="PackedScene" path="res://Scenes/win_screen.tscn" id="9_1li2s"]
+[ext_resource type="Texture2D" uid="uid://bonef60qsbndy" path="res://Sprites/Map/speedboost.png" id="10_vqkbv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j2k0l"]
+size = Vector2(228, 82)
 
 [node name="JedMap" type="Node2D"]
 script = ExtResource("1_w2pkx")
@@ -132,9 +135,6 @@ zoom = Vector2(0.3, 0.3)
 [node name="win screen" parent="." instance=ExtResource("9_1li2s")]
 visible = false
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_vqkbv")
-autoplay = true
 [node name="boost" type="Area2D" parent="."]
 z_index = -1
 texture_filter = 1

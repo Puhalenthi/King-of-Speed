@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dfbt8id0lex30"]
+[gd_scene load_steps=4 format=3 uid="uid://dfbt8id0lex30"]
 
 [ext_resource type="Texture2D" uid="uid://bw4ic6s2mu2bn" path="res://bgg-removebg-preview.png" id="1_a00f1"]
 [ext_resource type="Script" uid="uid://dlnqs10f2orlj" path="res://Scenes/win_screen.gd" id="1_awi1s"]
 [ext_resource type="Texture2D" uid="uid://dl5n7uvfspdpx" path="res://winner-removebg-preview (1).png" id="2_awi1s"]
-[ext_resource type="FontFile" uid="uid://drudngol87yc" path="res://NCLNeovibes-Demo.otf" id="4_bwc64"]
 
 [node name="win screen" type="CanvasLayer"]
 script = ExtResource("1_awi1s")
@@ -17,33 +16,3 @@ texture = ExtResource("1_a00f1")
 position = Vector2(557, 373)
 scale = Vector2(0.89039, 1)
 texture = ExtResource("2_awi1s")
-
-[node name="Label" type="Label" parent="."]
-offset_left = 269.0
-offset_top = 195.0
-offset_right = 874.0
-offset_bottom = 323.0
-theme_override_fonts/font = ExtResource("4_bwc64")
-theme_override_font_sizes/font_size = 96
-text = "NULL"
-
-[node name="BackToMenu" type="Button" parent="."]
-offset_left = 382.0
-offset_top = 534.0
-offset_right = 559.0
-offset_bottom = 564.0
-scale = Vector2(1.88, 2)
-theme_override_fonts/font = ExtResource("4_bwc64")
-text = "BACK TO MENU"
-
-[node name="Rematch" type="Button" parent="."]
-offset_left = 383.0
-offset_top = 467.0
-offset_right = 560.0
-offset_bottom = 497.0
-scale = Vector2(1.88, 2)
-theme_override_fonts/font = ExtResource("4_bwc64")
-text = "REMATCH"
-
-[connection signal="pressed" from="BackToMenu" to="." method="_on_back_to_menu_pressed"]
-[connection signal="pressed" from="Rematch" to="." method="_on_rematch_pressed"]
