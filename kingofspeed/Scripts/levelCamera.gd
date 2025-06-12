@@ -10,6 +10,8 @@ var current_checkpoint_index = 0
 @export var min_focus_distance = 100.0  # Distance below which camera stays at midpoint
 var target_camera_position = Vector2.ZERO
 
+var game_end : bool
+
 func _ready() -> void:
 	player1 = $Player/CharacterBody2D
 	player2 = $Player2/CharacterBody2D
@@ -137,6 +139,7 @@ func reset_checkpoints():
 	# Set all checkpoints is_passed to false
 	for checkpoint in checkpoints:
 		checkpoint.is_passed = false
+		checkpoint.passed_player = null
 	
 	# Reset current checkpoint back to starting one
 	current_checkpoint_index = 0
@@ -163,17 +166,21 @@ func check_players_on_screen():
 	screen_bounds = screen_bounds.grow(buffer)
 	
 	# Check player1
-	if player1 and is_instance_valid(player1):
+	if player1 and is_instance_valid(player1) and not game_end:
 		if not screen_bounds.has_point(player1.global_position):
 			print("Player 1 went off-screen, destroying...")
 			player1.queue_free()
 			player1 = null
 			$"win screen".visible = true
+			$"win screen"/Label.text = "PLAYER 2"
+			game_end = true
 	
 	# Check player2
-	if player2 and is_instance_valid(player2):
+	if player2 and is_instance_valid(player2) and not game_end:
 		if not screen_bounds.has_point(player2.global_position):
 			print("Player 2 went off-screen, destroying...")
 			player2.queue_free()
 			player2 = null
 			$"win screen".visible = true
+			$"win screen"/Label.text = "PLAYER 1"
+			game_end = true

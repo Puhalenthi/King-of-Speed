@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bey1012cmyh0m"]
+[gd_scene load_steps=29 format=3 uid="uid://bey1012cmyh0m"]
 
 [ext_resource type="Texture2D" uid="uid://dix63h2yho0yb" path="res://Images/image (2).png" id="1_cmrfp"]
 [ext_resource type="Script" uid="uid://cn2gwnmbs1ugo" path="res://Scenes/main_menu.gd" id="1_if7li"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://idvcdmwddch6" path="res://Scripts/color_rect_2.gd" id="8_if7li"]
 [ext_resource type="Script" uid="uid://dggnedpkk6o84" path="res://Scripts/color_rect_4.gd" id="10_fh7cp"]
 [ext_resource type="Texture2D" uid="uid://diyapuwqms3hx" path="res://Images/poop.png" id="10_loo7a"]
+[ext_resource type="AudioStream" uid="uid://d3kj0if03obj1" path="res://Scenes/dusters.mp3" id="12_rrcx7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cayip"]
 bg_color = Color(0.337255, 0.67451, 1, 0)
@@ -436,6 +437,10 @@ visible = false
 visible = false
 
 [node name="localtimer" type="Timer" parent="localfade"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_rrcx7")
+autoplay = true
 
 [connection signal="mouse_entered" from="PlayOnline" to="ColorRect" method="_on_play_online_mouse_entered"]
 [connection signal="mouse_exited" from="PlayOnline" to="ColorRect" method="_on_play_online_mouse_exited"]
