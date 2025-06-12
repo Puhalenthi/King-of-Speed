@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://2d3kes4tduu3"]
+[gd_scene load_steps=8 format=3 uid="uid://2d3kes4tduu3"]
 
 [ext_resource type="PackedScene" uid="uid://b3e36i25yx11u" path="res://Scenes/player.tscn" id="1_3jd7s"]
 [ext_resource type="Script" uid="uid://bu56a3bk5kdhk" path="res://Scripts/levelCamera.gd" id="1_kho38"]
 [ext_resource type="TileSet" uid="uid://c8skhbmqarkk3" path="res://Sprites/Map/groundtiles.tres" id="2_kho38"]
+[ext_resource type="Script" uid="uid://v31tg0ojl1pw" path="res://Scripts/Player2.gd" id="3_ar1ab"]
 [ext_resource type="PackedScene" uid="uid://bp2c1440kuuft" path="res://Scenes/LeftSlope.tscn" id="4_h8s3q"]
 [ext_resource type="PackedScene" uid="uid://2sav6y5ymn54" path="res://Scenes/RightSlope.tscn" id="5_v4y1o"]
 [ext_resource type="PackedScene" uid="uid://bxeygcgan3ecm" path="res://Scenes/checkpoint.tscn" id="6_v4y1o"]
@@ -19,6 +20,9 @@ enabled = false
 [node name="Player2" parent="." instance=ExtResource("1_3jd7s")]
 position = Vector2(166, 0)
 scale = Vector2(3, 3)
+
+[node name="CharacterBody2D" parent="Player2" index="0"]
+script = ExtResource("3_ar1ab")
 
 [node name="Camera2D" parent="Player2/CharacterBody2D" index="2"]
 enabled = false
@@ -91,6 +95,10 @@ scale = Vector2(1, 4.72001)
 [node name="checkpoint10" parent="." instance=ExtResource("6_v4y1o")]
 position = Vector2(-2421, -539)
 scale = Vector2(1, 4.72001)
+
+[node name="checkpoint11" parent="." instance=ExtResource("6_v4y1o")]
+position = Vector2(-486, 1156)
+scale = Vector2(1.00221, 13.72)
 
 [editable path="Player"]
 [editable path="Player2"]
