@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" path="res://Scenes/LeftSlope.tscn" id="3_t5hq7"]
 [ext_resource type="Script" uid="uid://v31tg0ojl1pw" path="res://Scripts/Player2.gd" id="4_jy8rq"]
 [ext_resource type="PackedScene" path="res://Scenes/RightSlope.tscn" id="4_q53se"]
-[ext_resource type="PackedScene" path="res://Scenes/boostway.tscn" id="5_q53se"]
+[ext_resource type="PackedScene" uid="uid://dfn0rokc11ar5" path="res://Scenes/boostway.tscn" id="5_q53se"]
 [ext_resource type="PackedScene" path="res://Scenes/checkpoint.tscn" id="7_jy8rq"]
 [ext_resource type="PackedScene" path="res://Scenes/win_screen.tscn" id="9_1li2s"]
 [ext_resource type="Texture2D" uid="uid://bonef60qsbndy" path="res://Sprites/Map/speedboost.png" id="10_vqkbv"]
@@ -33,7 +33,6 @@ position = Vector2(278, -153)
 
 [node name="CharacterBody2D" parent="Player2" index="0"]
 script = ExtResource("4_jy8rq")
-boost_speed_multiplier = 1.5
 
 [node name="UsernameLabel" parent="Player2/CharacterBody2D" index="4"]
 text = "Player2"
@@ -151,9 +150,12 @@ position = Vector2(3, -23)
 shape = SubResource("RectangleShape2D_j2k0l")
 
 [connection signal="area_entered" from="boost" to="Player/CharacterBody2D" method="_on_boost_area_entered"]
+[connection signal="area_entered" from="boost" to="Player2/CharacterBody2D" method="_on_boost_area_entered"]
 [connection signal="area_exited" from="boost" to="Player/CharacterBody2D" method="_on_boost_area_exited"]
 [connection signal="body_entered" from="boost" to="Player/CharacterBody2D" method="_on_boost_body_entered"]
+[connection signal="body_entered" from="boost" to="Player2/CharacterBody2D" method="_on_boost_body_entered"]
 [connection signal="body_exited" from="boost" to="Player/CharacterBody2D" method="_on_boost_body_exited"]
+[connection signal="body_exited" from="boost" to="Player2/CharacterBody2D" method="_on_boost_body_exited"]
 
 [editable path="Player"]
 [editable path="Player2"]
