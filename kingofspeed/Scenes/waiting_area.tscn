@@ -21,6 +21,7 @@ position = Vector2(166, 0)
 
 [node name="CharacterBody2D" parent="Player2" index="0"]
 script = ExtResource("3_ar1ab")
+boost_speed_multiplier = 1.5
 
 [node name="Camera2D" parent="Player2/CharacterBody2D" index="2"]
 enabled = false

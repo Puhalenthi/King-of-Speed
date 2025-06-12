@@ -1,15 +1,16 @@
-[gd_scene load_steps=12 format=3 uid="uid://bbriny3jv2jqf"]
+[gd_scene load_steps=13 format=3 uid="uid://bbriny3jv2jqf"]
 
 [ext_resource type="TileSet" uid="uid://dt01ujqbvfm8d" path="res://Sprites/Map/groundtiles.tres" id="1_egtcu"]
 [ext_resource type="Script" uid="uid://bu56a3bk5kdhk" path="res://Scripts/levelCamera.gd" id="1_w2pkx"]
 [ext_resource type="PackedScene" uid="uid://b84xvofva7ep7" path="res://Scenes/player.tscn" id="2_8njdb"]
-[ext_resource type="PackedScene" path="res://Scenes/LeftSlope.tscn" id="3_t5hq7"]
+[ext_resource type="PackedScene" uid="uid://bp2c1440kuuft" path="res://Scenes/LeftSlope.tscn" id="3_t5hq7"]
 [ext_resource type="Script" uid="uid://v31tg0ojl1pw" path="res://Scripts/Player2.gd" id="4_jy8rq"]
-[ext_resource type="PackedScene" path="res://Scenes/RightSlope.tscn" id="4_q53se"]
+[ext_resource type="PackedScene" uid="uid://2sav6y5ymn54" path="res://Scenes/RightSlope.tscn" id="4_q53se"]
 [ext_resource type="PackedScene" uid="uid://dfn0rokc11ar5" path="res://Scenes/boostway.tscn" id="5_q53se"]
-[ext_resource type="PackedScene" path="res://Scenes/checkpoint.tscn" id="7_jy8rq"]
-[ext_resource type="PackedScene" path="res://Scenes/win_screen.tscn" id="9_1li2s"]
+[ext_resource type="PackedScene" uid="uid://bxeygcgan3ecm" path="res://Scenes/checkpoint.tscn" id="7_jy8rq"]
+[ext_resource type="PackedScene" uid="uid://dfbt8id0lex30" path="res://Scenes/win_screen.tscn" id="9_1li2s"]
 [ext_resource type="Texture2D" uid="uid://bonef60qsbndy" path="res://Sprites/Map/speedboost.png" id="10_vqkbv"]
+[ext_resource type="AudioStream" uid="uid://mpo7nxo6dt1s" path="res://Images/king of speed.mp3" id="11_j2k0l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j2k0l"]
 size = Vector2(228, 82)
@@ -148,6 +149,10 @@ texture = ExtResource("10_vqkbv")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="boost"]
 position = Vector2(3, -23)
 shape = SubResource("RectangleShape2D_j2k0l")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_j2k0l")
+autoplay = true
 
 [connection signal="area_entered" from="boost" to="Player/CharacterBody2D" method="_on_boost_area_entered"]
 [connection signal="area_entered" from="boost" to="Player2/CharacterBody2D" method="_on_boost_area_entered"]
