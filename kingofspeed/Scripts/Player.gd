@@ -15,7 +15,7 @@ var current_state: PlayerState = PlayerState.IDLE
 var previous_state: PlayerState = PlayerState.IDLE
 
 #visual variables
-@onready var animated_sprite_2d = %AnimatedSprite2D
+@onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var sprite_2d = %Sprite2D
 
 # Movement variables
