@@ -99,6 +99,7 @@ func _physics_process(delta):
 	handle_grapple_physics(delta)  # New function for grapple constraint
 	update_momentum_buffer()
 	move_and_slide()
+	update_player_anim()
 	
 	# Check for ground landing while grappled (must be after move_and_slide)
 	handle_grapple_ground_exit()
@@ -242,7 +243,10 @@ func update_player_state():
 			elif is_moving:
 				new_state = PlayerState.RUNNING
 			else:
+				
 				new_state = PlayerState.IDLE
+				#if current_state != PlayerState.IDLE:
+					#animated_sprite_2d.play("stop run")
 		else:
 			if is_super_speed:
 				new_state = PlayerState.SUPERSPEED_FALLING
@@ -258,7 +262,7 @@ func update_player_state():
 func _on_state_enter(state: PlayerState):
 	match state:
 		PlayerState.IDLE:
-			pass
+			animated_sprite_2d.stop()
 		PlayerState.RUNNING:
 			pass
 		PlayerState.FALLING:
@@ -299,7 +303,7 @@ func _on_state_exit(state: PlayerState):
 		PlayerState.IDLE:
 			pass
 		PlayerState.RUNNING:
-			pass
+			animated_sprite_2d.play("stop run")
 		PlayerState.FALLING:
 			pass
 		PlayerState.SUPERSPEED_FALLING:
@@ -342,10 +346,10 @@ func handle_jump():
 	if Input.is_action_just_pressed("jump") and jumps > 0:
 		jumps -= 1
 		velocity.y = jump_velocity
-		if is_on_floor():
-			animated_sprite_2d.play("jump")
-		else:
-			animated_sprite_2d.play("double jump")
+		#if is_on_floor():
+			#animated_sprite_2d.play("jump")
+		#else:
+			#animated_sprite_2d.play("double jump")
 
 func handle_boost(delta):
 	# Don't allow boosting when grappled
@@ -395,8 +399,9 @@ func handle_movement(delta):
 		var effective_speed = speed
 		if is_boosting:
 			effective_speed *= boost_speed_multiplier
-			animated_sprite_2d.play("boost run")
-		else:
+			if is_on_floor():
+				animated_sprite_2d.play("boost run")
+		elif is_on_floor():
 			animated_sprite_2d.play("running")
 		
 		# Apply acceleration when moving
@@ -406,7 +411,6 @@ func handle_movement(delta):
 		if is_on_floor():
 			var friction_to_use = get_current_friction()
 			velocity.x = move_toward(velocity.x, 0, friction_to_use * delta)
-			animated_sprite_2d.play("stop run")
 		else:
 			# Reduced air friction
 			var air_friction = get_current_friction() * 0.3
@@ -592,17 +596,16 @@ func _on_jumped():
 	# Called when jumping - useful for sound effects or animations
 	animated_sprite_2d.play("jump")
 	
-#func update_player_anim():
-	#if current_state != PlayerState.IDLE: #not idling update, hide sprite 2d
-		#animated_sprite_2d.hide = false
-		#sprite.hide = true
-	#if current_state == PlayerState.RUNNING: #animation handling for diff states
-		#animated_sprite_2d.play("running")
-	#elif is_super_speed_state():
-		#animated_sprite_2d.play("boost run")
-	#elif current_state == PlayerState.IDLE:
-		#animated_sprite_2d.hide = true
-		#sprite.hide = false
+func update_player_anim():
+	var direction = Input.get_axis("move_left", "move_right")
+
+	if PlayerState.IDLE == current_state:
+		animated_sprite_2d.play("idle")
+	if is_on_floor():
+		if is_super_speed_state():
+			animated_sprite_2d.play("boost run")
+		#if current_state == PlayerState.RUNNING and direction == 0 and !animated_sprite_2d.is_playing("stop run"):
+			#animated_sprite_2d.play("stop run")
 	
 func transferMomentum(direction):
 	velocity.x += momentum_buffer * direction

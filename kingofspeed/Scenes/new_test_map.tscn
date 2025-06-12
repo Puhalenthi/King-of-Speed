@@ -1,9 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bjrjfhn78n7fo"]
+[gd_scene load_steps=5 format=3 uid="uid://bm30u1of8leik"]
 
-[ext_resource type="TileSet" uid="uid://c8skhbmqarkk3" path="res://Sprites/Map/groundtiles.tres" id="1_gh48d"]
-[ext_resource type="PackedScene" uid="uid://bp2c1440kuuft" path="res://Scenes/LeftSlope.tscn" id="2_dcdnx"]
-[ext_resource type="PackedScene" uid="uid://2sav6y5ymn54" path="res://Scenes/RightSlope.tscn" id="3_yn5in"]
-[ext_resource type="PackedScene" uid="uid://b84xvofva7ep7" path="res://Scenes/Player.tscn" id="4_ltxy5"]
+[ext_resource type="TileSet" uid="uid://dt01ujqbvfm8d" path="res://Sprites/Map/groundtiles.tres" id="1_gh48d"]
+[ext_resource type="PackedScene" path="res://Scenes/LeftSlope.tscn" id="2_dcdnx"]
+[ext_resource type="PackedScene" path="res://Scenes/RightSlope.tscn" id="3_yn5in"]
+[ext_resource type="PackedScene" uid="uid://b84xvofva7ep7" path="res://Scenes/player.tscn" id="4_ltxy5"]
 
 [node name="newTestMap" type="Node2D"]
 
@@ -24,6 +24,7 @@ scale = Vector2(7.04, 7.16)
 collision_layer = 3
 
 [node name="Player" parent="." instance=ExtResource("4_ltxy5")]
+scale = Vector2(7, 7)
 
 [node name="CharacterBody2D" parent="Player" index="0"]
 collision_layer = 3
