@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://2d3kes4tduu3"]
 
-[ext_resource type="PackedScene" uid="uid://b3e36i25yx11u" path="res://Scenes/player.tscn" id="1_3jd7s"]
+[ext_resource type="PackedScene" uid="uid://b84xvofva7ep7" path="res://Scenes/player.tscn" id="1_3jd7s"]
 [ext_resource type="Script" uid="uid://bu56a3bk5kdhk" path="res://Scripts/levelCamera.gd" id="1_kho38"]
-[ext_resource type="TileSet" uid="uid://c8skhbmqarkk3" path="res://Sprites/Map/groundtiles.tres" id="2_kho38"]
+[ext_resource type="TileSet" uid="uid://dt01ujqbvfm8d" path="res://Sprites/Map/groundtiles.tres" id="2_kho38"]
 [ext_resource type="Script" uid="uid://v31tg0ojl1pw" path="res://Scripts/Player2.gd" id="3_ar1ab"]
 [ext_resource type="PackedScene" uid="uid://bp2c1440kuuft" path="res://Scenes/LeftSlope.tscn" id="4_h8s3q"]
 [ext_resource type="PackedScene" uid="uid://2sav6y5ymn54" path="res://Scenes/RightSlope.tscn" id="5_v4y1o"]
@@ -12,14 +12,12 @@
 script = ExtResource("1_kho38")
 
 [node name="Player" parent="." instance=ExtResource("1_3jd7s")]
-scale = Vector2(3, 3)
 
 [node name="Camera2D" parent="Player/CharacterBody2D" index="2"]
 enabled = false
 
 [node name="Player2" parent="." instance=ExtResource("1_3jd7s")]
 position = Vector2(166, 0)
-scale = Vector2(3, 3)
 
 [node name="CharacterBody2D" parent="Player2" index="0"]
 script = ExtResource("3_ar1ab")
@@ -59,46 +57,57 @@ scale = Vector2(3.64, 3.71856)
 [node name="checkpoint" parent="." instance=ExtResource("6_v4y1o")]
 position = Vector2(642, 4)
 scale = Vector2(1, 5.76)
+collision_layer = 7
 
 [node name="checkpoint2" parent="." instance=ExtResource("6_v4y1o")]
 position = Vector2(-1464, 1054)
 scale = Vector2(1, 12.48)
+collision_layer = 7
 
 [node name="checkpoint3" parent="." instance=ExtResource("6_v4y1o")]
 position = Vector2(-2217, 3406)
 scale = Vector2(1, 4.72001)
+collision_layer = 7
 
 [node name="checkpoint4" parent="." instance=ExtResource("6_v4y1o")]
 position = Vector2(-4294, 2906)
 scale = Vector2(1, 4.72001)
+collision_layer = 7
 
 [node name="checkpoint5" parent="." instance=ExtResource("6_v4y1o")]
 position = Vector2(-3531, 2411)
 scale = Vector2(1, 4.72001)
+collision_layer = 7
 
 [node name="checkpoint6" parent="." instance=ExtResource("6_v4y1o")]
 position = Vector2(-3090, 1898)
 scale = Vector2(1, 4.72001)
+collision_layer = 7
 
 [node name="checkpoint7" parent="." instance=ExtResource("6_v4y1o")]
 position = Vector2(-3737, 1397)
 scale = Vector2(1, 4.72001)
+collision_layer = 7
 
 [node name="checkpoint8" parent="." instance=ExtResource("6_v4y1o")]
 position = Vector2(-3011, 906)
 scale = Vector2(1, 4.72001)
+collision_layer = 7
 
 [node name="checkpoint9" parent="." instance=ExtResource("6_v4y1o")]
 position = Vector2(-4255, 408)
 scale = Vector2(1, 4.72001)
+collision_layer = 7
 
 [node name="checkpoint10" parent="." instance=ExtResource("6_v4y1o")]
 position = Vector2(-2421, -539)
 scale = Vector2(1, 4.72001)
+collision_layer = 7
 
 [node name="checkpoint11" parent="." instance=ExtResource("6_v4y1o")]
 position = Vector2(-486, 1156)
 scale = Vector2(1.00221, 13.72)
+collision_layer = 7
 
 [editable path="Player"]
 [editable path="Player2"]

@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://dm5cgxruw742a"]
 
-[ext_resource type="TileSet" uid="uid://c8skhbmqarkk3" path="res://Sprites/Map/groundtiles.tres" id="1_egtcu"]
+[ext_resource type="TileSet" uid="uid://dt01ujqbvfm8d" path="res://Sprites/Map/groundtiles.tres" id="1_egtcu"]
 [ext_resource type="Script" uid="uid://bu56a3bk5kdhk" path="res://Scripts/levelCamera.gd" id="1_w2pkx"]
-[ext_resource type="PackedScene" uid="uid://b84xvofva7ep7" path="res://Scenes/Player.tscn" id="2_8njdb"]
+[ext_resource type="PackedScene" uid="uid://b84xvofva7ep7" path="res://Scenes/player.tscn" id="2_8njdb"]
 [ext_resource type="PackedScene" uid="uid://bp2c1440kuuft" path="res://Scenes/LeftSlope.tscn" id="3_t5hq7"]
 [ext_resource type="Script" uid="uid://v31tg0ojl1pw" path="res://Scripts/Player2.gd" id="4_jy8rq"]
 [ext_resource type="PackedScene" uid="uid://2sav6y5ymn54" path="res://Scenes/RightSlope.tscn" id="4_q53se"]
@@ -21,11 +21,17 @@ layer_0/tile_data = PackedInt32Array(65535, 65539, 0, 131071, 65539, 0, 65536, 6
 [node name="Player" parent="." instance=ExtResource("2_8njdb")]
 position = Vector2(0, -167)
 
+[node name="UsernameLabel" parent="Player/CharacterBody2D" index="4"]
+text = "Player1"
+
 [node name="Player2" parent="." instance=ExtResource("2_8njdb")]
 position = Vector2(278, -153)
 
 [node name="CharacterBody2D" parent="Player2" index="0"]
 script = ExtResource("4_jy8rq")
+
+[node name="UsernameLabel" parent="Player2/CharacterBody2D" index="4"]
+text = "Player2"
 
 [node name="LeftSlope" parent="." instance=ExtResource("3_t5hq7")]
 position = Vector2(5776, 2126)
@@ -114,10 +120,15 @@ scale = Vector2(1, 11.36)
 position = Vector2(-1797, 2101)
 scale = Vector2(1, 11.36)
 
+[node name="checkpoint11" parent="." instance=ExtResource("7_jy8rq")]
+position = Vector2(-1551, -598)
+scale = Vector2(1, 11.36)
+
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.3, 0.3)
 
 [node name="win screen" parent="." instance=ExtResource("9_1li2s")]
 visible = false
 
+[editable path="Player"]
 [editable path="Player2"]

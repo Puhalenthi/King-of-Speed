@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bm30u1of8leik"]
+[gd_scene load_steps=5 format=3 uid="uid://bjrjfhn78n7fo"]
 
-[ext_resource type="TileSet" uid="uid://c8skhbmqarkk3" path="res://Sprites/Map/groundtiles.tres" id="1_gh48d"]
+[ext_resource type="TileSet" uid="uid://dt01ujqbvfm8d" path="res://Sprites/Map/groundtiles.tres" id="1_gh48d"]
 [ext_resource type="PackedScene" uid="uid://bp2c1440kuuft" path="res://Scenes/LeftSlope.tscn" id="2_dcdnx"]
 [ext_resource type="PackedScene" uid="uid://2sav6y5ymn54" path="res://Scenes/RightSlope.tscn" id="3_yn5in"]
 [ext_resource type="PackedScene" uid="uid://b84xvofva7ep7" path="res://Scenes/player.tscn" id="4_ltxy5"]
