@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfbt8id0lex30"]
+
+[ext_resource type="Texture2D" uid="uid://bw4ic6s2mu2bn" path="res://bgg-removebg-preview.png" id="1_a00f1"]
+[ext_resource type="Script" uid="uid://dlnqs10f2orlj" path="res://Scenes/win_screen.gd" id="1_awi1s"]
+[ext_resource type="Texture2D" uid="uid://dl5n7uvfspdpx" path="res://winner-removebg-preview (1).png" id="2_awi1s"]
+
+[node name="win screen" type="CanvasLayer"]
+script = ExtResource("1_awi1s")
+
+[node name="Bgg-removebg-preview" type="Sprite2D" parent="."]
+position = Vector2(570, 370)
+scale = Vector2(1.83183, 1)
+texture = ExtResource("1_a00f1")
+
+[node name="Winner-removebg-preview(1)" type="Sprite2D" parent="."]
+position = Vector2(557, 373)
+scale = Vector2(0.89039, 1)
+texture = ExtResource("2_awi1s")

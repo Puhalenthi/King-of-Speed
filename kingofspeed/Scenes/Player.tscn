@@ -1,8 +1,7 @@
-[gd_scene load_steps=82 format=3 uid="uid://b84xvofva7ep7"]
-
+[gd_scene load_steps=83 format=3 uid="uid://b84xvofva7ep7"]
 
 [ext_resource type="Texture2D" uid="uid://cbfetk8qf0umx" path="res://Sprites/Player/Speed_Boost_Running.png" id="1_fkybt"]
-[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_rpqav"]
+[ext_resource type="Script" uid="uid://d0v2anfpprdpg" path="res://Scripts/Player.gd" id="1_rpqav"]
 [ext_resource type="Texture2D" uid="uid://k4es1jdu27gl" path="res://Images/arrow.png" id="2_kyqiw"]
 [ext_resource type="Texture2D" uid="uid://b4yn4au0wbjrt" path="res://Sprites/Player/Falling.png" id="2_x3wgy"]
 [ext_resource type="Texture2D" uid="uid://cyxsrvi0llb1k" path="res://Sprites/Player/Stop_Running.png" id="3_3smsa"]
@@ -10,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://cwt76x2ibl1rk" path="res://Sprites/Player/Double_Jump.png" id="4_f1ek2"]
 [ext_resource type="Texture2D" uid="uid://bahvw1wh00nou" path="res://Sprites/Player/Wall Jump.png" id="5_f1ek2"]
 [ext_resource type="Texture2D" uid="uid://dihyggwccgi02" path="res://Sprites/Player/Jumping.png" id="5_tx1dd"]
-
 
 [sub_resource type="BoxMesh" id="BoxMesh_qbkls"]
 
@@ -538,9 +536,21 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_f1ek2"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("CharacterBody2D/UsernameLabel:text")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+
 [node name="Player" type="Node2D"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["player"]]
+collision_layer = 2
 script = ExtResource("1_rpqav")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="CharacterBody2D"]
@@ -558,6 +568,13 @@ zoom = Vector2(0.7, 0.7)
 scale = Vector2(0.0264484, 0.043379)
 texture = ExtResource("2_kyqiw")
 
+[node name="UsernameLabel" type="Label" parent="CharacterBody2D"]
+offset_left = -21.0
+offset_top = -36.0
+offset_right = 22.0
+offset_bottom = -13.0
+text = "Thing"
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-3, -14)
 scale = Vector2(0.466797, 0.466797)
@@ -566,3 +583,5 @@ animation = &"wall jump"
 frame = 7
 frame_progress = 1.0
 
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_f1ek2")
