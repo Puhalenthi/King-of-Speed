@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dm5cgxruw742a"]
+[gd_scene load_steps=11 format=3 uid="uid://dm5cgxruw742a"]
 
 [ext_resource type="TileSet" uid="uid://dt01ujqbvfm8d" path="res://Sprites/Map/groundtiles.tres" id="1_egtcu"]
 [ext_resource type="Script" uid="uid://bu56a3bk5kdhk" path="res://Scripts/levelCamera.gd" id="1_w2pkx"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://by701f6tkxndf" path="res://Scenes/boostway.tscn" id="5_q53se"]
 [ext_resource type="PackedScene" uid="uid://bxeygcgan3ecm" path="res://Scenes/checkpoint.tscn" id="7_jy8rq"]
 [ext_resource type="PackedScene" uid="uid://dfbt8id0lex30" path="res://Scenes/win_screen.tscn" id="9_1li2s"]
+[ext_resource type="AudioStream" uid="uid://5gkq5vipiv55" path="res://Scenes/king of speed.mp3" id="10_vqkbv"]
 
 [node name="JedMap" type="Node2D"]
 script = ExtResource("1_w2pkx")
@@ -129,6 +130,10 @@ zoom = Vector2(0.3, 0.3)
 
 [node name="win screen" parent="." instance=ExtResource("9_1li2s")]
 visible = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_vqkbv")
+autoplay = true
 
 [editable path="Player"]
 [editable path="Player2"]
