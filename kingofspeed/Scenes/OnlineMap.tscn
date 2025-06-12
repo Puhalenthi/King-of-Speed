@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://d26ifd4nga5eu"]
+[gd_scene load_steps=31 format=3 uid="uid://d26ifd4nga5eu"]
 
 [ext_resource type="Script" uid="uid://b8rcjhtyrerht" path="res://Scenes/online_map.gd" id="1_lrc77"]
 [ext_resource type="Texture2D" uid="uid://dix63h2yho0yb" path="res://Images/image (2).png" id="2_ovdqi"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://df7uiyeodrp64" path="res://Scenes/33.gd" id="8_mbgw2"]
 [ext_resource type="PackedScene" uid="uid://x367r2ypk5m4" path="res://Scenes/color_rect.tscn" id="9_eyoeu"]
 [ext_resource type="PackedScene" uid="uid://rkmlckfyvcx7" path="res://Scenes/testMapNoPlayer.tscn" id="10_ovdqi"]
+[ext_resource type="PackedScene" uid="uid://c0k3a62l6phb2" path="res://pause_menu.tscn" id="11_mebwe"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ani7"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -478,6 +479,8 @@ visible = false
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("uid://b84xvofva7ep7")
 spawn_path = NodePath("..")
+
+[node name="pause menu" parent="." instance=ExtResource("11_mebwe")]
 
 [connection signal="mouse_entered" from="CanvasLayer/HostButton" to="CanvasLayer/ColorRect" method="_on_host_button_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/HostButton" to="CanvasLayer/ColorRect" method="_on_host_button_mouse_exited"]

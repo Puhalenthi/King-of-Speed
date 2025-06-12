@@ -14,11 +14,31 @@ var enet_peer = ENetMultiplayerPeer.new()
 var nonlocal = true
 
 func _ready():
-	# initial fade-in
+	# Set this node to always process so it works when paused
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	
+	# Hide pause menu and set it to always process
+	$"pause menu".hide()
+	$"pause menu".process_mode = Node.PROCESS_MODE_ALWAYS
+	
+	# Your existing code
 	$CanvasLayer/fade/Timer.start()
 	$CanvasLayer/fade/AnimationPlayer.play("fadeout")
 	$CanvasLayer/CurrentIP.text = get_local_ip()
 
+func _input(event):
+	if event is InputEventKey and event.pressed and event.keycode == KEY_P:
+		var pause_menu = $"pause menu"
+		if pause_menu.visible:
+			pause_menu.hide()
+			get_tree().paused = false
+		else:
+			pause_menu.show()
+			get_tree().paused = true
+
+		
+		
+		
 func _on_timer_timeout() -> void:
 	$CanvasLayer/fade.hide()
 

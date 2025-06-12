@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0k3a62l6phb2"]
+
+[ext_resource type="FontFile" uid="uid://q4s1an2fkmo4" path="res://Pixel Game.otf" id="1_hdmo1"]
+[ext_resource type="Script" uid="uid://b8yvycvxjhugl" path="res://pause_menu.gd" id="1_nwcfo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hdmo1"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nwcfo"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="pause menu" type="CanvasLayer"]
+script = ExtResource("1_nwcfo")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 263.0
+offset_top = 130.0
+offset_right = 907.0
+offset_bottom = 475.0
+color = Color(0.756863, 0.780392, 1, 0.701961)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 55.0
+offset_top = 68.0
+offset_right = 1094.0
+offset_bottom = 477.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/shadow_outline_size = 20
+theme_override_fonts/font = ExtResource("1_hdmo1")
+theme_override_font_sizes/font_size = 200
+text = "Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackToMain" type="Button" parent="."]
+offset_left = 439.0
+offset_top = 372.0
+offset_right = 717.0
+offset_bottom = 421.0
+theme_override_colors/font_outline_color = Color(0.282353, 0.0509804, 0.447059, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("1_hdmo1")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/hover = SubResource("StyleBoxFlat_hdmo1")
+theme_override_styles/normal = SubResource("StyleBoxFlat_nwcfo")
+text = "Back to Main Menu"
+
+[connection signal="pressed" from="BackToMain" to="." method="_on_back_to_main_pressed"]
