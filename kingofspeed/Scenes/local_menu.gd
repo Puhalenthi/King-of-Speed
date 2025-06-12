@@ -19,3 +19,7 @@ func _on_back_to_main_pressed() -> void:
 func _on_l_ltimer_timeout() -> void:
 	if button_type == "back1":
 		get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
+
+
+func _on_start_game_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/jed_map.tscn")

@@ -30,6 +30,7 @@ scale = Vector2(0.907031, 0.908333)
 texture = ExtResource("1_bp7d8")
 
 [node name="Label" type="Label" parent="CanvasLayer"]
+visible = false
 offset_left = 399.0
 offset_top = 189.0
 offset_right = 740.0
@@ -45,6 +46,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="LocalUsername1" type="LineEdit" parent="CanvasLayer"]
+visible = false
 offset_left = 475.0
 offset_top = 247.0
 offset_right = 651.0
@@ -58,6 +60,7 @@ placeholder_text = "Username:"
 alignment = 1
 
 [node name="Label2" type="Label" parent="CanvasLayer"]
+visible = false
 offset_left = 396.0
 offset_top = 337.0
 offset_right = 743.0
@@ -72,7 +75,23 @@ text = "Player 2 Username"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Label3" type="Label" parent="CanvasLayer"]
+offset_left = 400.0
+offset_top = 206.0
+offset_right = 747.0
+offset_bottom = 258.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("1_wlrml")
+theme_override_font_sizes/font_size = 50
+text = "READY?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="LocalUsername2" type="LineEdit" parent="CanvasLayer"]
+visible = false
 offset_left = 469.0
 offset_top = 396.0
 offset_right = 660.0
@@ -84,6 +103,20 @@ theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_bp7d8")
 placeholder_text = "Username:"
 alignment = 1
+
+[node name="StartGame" type="Button" parent="CanvasLayer"]
+offset_left = 464.0
+offset_top = 276.0
+offset_right = 666.0
+offset_bottom = 307.0
+theme_override_colors/font_outline_color = Color(0.282353, 0.0509804, 0.447059, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("1_wlrml")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/hover = SubResource("StyleBoxFlat_0fwj7")
+theme_override_styles/normal = SubResource("StyleBoxFlat_11h3y")
+text = "Start Game"
+script = ExtResource("1_gug4c")
 
 [node name="BackToMain" type="Button" parent="CanvasLayer"]
 offset_left = 464.0
@@ -100,6 +133,7 @@ text = "Back to Main Menu"
 script = ExtResource("1_gug4c")
 
 [node name="Lfade" parent="CanvasLayer" instance=ExtResource("4_0fwj7")]
+visible = false
 
 [node name="Ltimer" type="Timer" parent="CanvasLayer/Lfade"]
 
@@ -108,6 +142,7 @@ visible = false
 
 [node name="LLtimer" type="Timer" parent="CanvasLayer/LLfade"]
 
+[connection signal="pressed" from="CanvasLayer/StartGame" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="CanvasLayer/BackToMain" to="." method="_on_back_to_main_pressed"]
 [connection signal="pressed" from="CanvasLayer/BackToMain" to="CanvasLayer/BackToMain" method="_on_pressed"]
 [connection signal="timeout" from="CanvasLayer/Lfade/Ltimer" to="." method="_on_ltimer_timeout"]
