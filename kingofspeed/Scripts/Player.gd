@@ -46,6 +46,12 @@ var current_boost: float = 100.0
 @export var boost_speed_multiplier: float = 1.5
 var is_boosting: bool = false
 
+# Item
+var box_scene_path: String = "res://Scripts/Items/box.tscn"
+var item: String = "Box"
+var count: int = 3
+var has_item: bool = true
+
 # Get the gravity from the project settings to be synced with RigidBody nodes
 var gravity: int = 1500
 
@@ -67,6 +73,7 @@ func _physics_process(delta):
 	handle_movement(delta)
 	update_momentum_buffer()
 	move_and_slide()
+	handle_item()
 	
 	# Fix ground penetration after move_and_slide()
 	handle_ground_penetration()
@@ -137,6 +144,27 @@ func handle_jump():
 	if Input.is_action_just_pressed("jump") and jumps > 0:
 		jumps -= 1
 		velocity.y = jump_velocity
+
+func handle_item():
+	# Handle item used
+	if has_item and Input.is_action_just_pressed("item"):
+		if item == "Box":
+			var box_scene = load(box_scene_path)
+			var box_instance = box_scene.instantiate()
+			print(global_position)
+			box_instance.spawn(self)
+		
+		count -= 1
+	
+	if count == 0:
+		item = ""
+		count = 0
+		has_item = false
+func add_item(name, uses):
+	# Handle adding an item when collected
+	if not has_item:
+		item = name
+		count = uses
 
 func handle_boost(delta):
 	# Check if boost input is pressed and we have boost available

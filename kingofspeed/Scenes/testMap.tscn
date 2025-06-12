@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cfb1po5piou2r"]
+[gd_scene load_steps=8 format=3 uid="uid://cfb1po5piou2r"]
 
-[ext_resource type="PackedScene" uid="uid://m4440o4jhv4t" path="res://Scenes/player.tscn" id="1_enll3"]
+[ext_resource type="PackedScene" uid="uid://b84xvofva7ep7" path="res://Scenes/player.tscn" id="1_enll3"]
 [ext_resource type="Texture2D" uid="uid://bv3mvrssxuggr" path="res://Images/spritesheet-Photoroom.png" id="2_1kuu2"]
 [ext_resource type="PackedScene" uid="uid://bp2c1440kuuft" path="res://Scenes/LeftSlope.tscn" id="3_c0d6t"]
 [ext_resource type="PackedScene" uid="uid://2sav6y5ymn54" path="res://Scenes/RightSlope.tscn" id="4_dj4tb"]
+[ext_resource type="PackedScene" uid="uid://u2gywaefj0qa" path="res://Scripts/Items/box.tscn" id="5_upetf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c0d6t"]
 texture = ExtResource("2_1kuu2")
@@ -165,7 +166,6 @@ sources/3 = SubResource("TileSetAtlasSource_c0d6t")
 
 [node name="Player" parent="." instance=ExtResource("1_enll3")]
 position = Vector2(0, -51)
-scale = Vector2(3, 3)
 
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2(0.9, 1)
@@ -192,3 +192,7 @@ scale = Vector2(1.2, 1.4)
 [node name="RightSlope2" parent="." instance=ExtResource("4_dj4tb")]
 position = Vector2(-428, 748)
 scale = Vector2(2.6, 3)
+
+[node name="box" parent="." instance=ExtResource("5_upetf")]
+position = Vector2(272, -225)
+scale = Vector2(0.5, 0.5)
