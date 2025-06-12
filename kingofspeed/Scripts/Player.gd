@@ -49,8 +49,9 @@ var was_airborne: bool = false
 # Boost system
 @export var max_boost: float = 100.0
 var current_boost: float = 100.0
+var collect_boost = false
 @export var boost_consumption_rate: float = 50.0
-@export var boost_speed_multiplier: float = 1.5
+@export var boost_speed_multiplier: float = 1.6
 var is_boosting: bool = false
 
 # Grapple system
@@ -100,6 +101,9 @@ func _physics_process(delta):
 	update_momentum_buffer()
 	move_and_slide()
 	update_player_anim()
+	print(collect_boost)
+	if collect_boost:
+		current_boost+=1
 	
 	# Check for ground landing while grappled (must be after move_and_slide)
 	handle_grapple_ground_exit()
@@ -217,7 +221,7 @@ func handle_grapple_physics(delta):
 func update_player_state():
 	var new_state: PlayerState
 	var is_moving = abs(velocity.x) > 1.0
-	var is_super_speed = abs(velocity.x) >= super_speed_threshold
+	var is_super_speed = Input.is_action_pressed("boost") and current_boost > 0
 	var is_grounded = is_on_floor()
 	
 	# Check grapple states first
@@ -406,6 +410,7 @@ func handle_movement(delta):
 		
 		# Apply acceleration when moving
 		velocity.x = move_toward(velocity.x, direction * effective_speed, acceleration * delta)
+		print("bost ", current_boost)
 	else:
 		# Handle friction based on current state
 		if is_on_floor():
@@ -609,3 +614,20 @@ func update_player_anim():
 	
 func transferMomentum(direction):
 	velocity.x += momentum_buffer * direction
+
+
+func _on_boost_area_entered(area: Area2D) -> void:
+	collect_boost = true
+
+
+
+func _on_boost_area_exited(area: Area2D) -> void:
+	collect_boost = false
+
+
+func _on_boost_body_entered(body: Node2D) -> void:
+	collect_boost = true
+
+
+func _on_boost_body_exited(body: Node2D) -> void:
+	collect_boost = false
