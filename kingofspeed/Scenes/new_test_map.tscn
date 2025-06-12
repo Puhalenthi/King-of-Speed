@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bjrjfhn78n7fo"]
+[gd_scene load_steps=5 format=3 uid="uid://bm30u1of8leik"]
 
 [ext_resource type="TileSet" uid="uid://c8skhbmqarkk3" path="res://Sprites/Map/groundtiles.tres" id="1_gh48d"]
 [ext_resource type="PackedScene" uid="uid://bp2c1440kuuft" path="res://Scenes/LeftSlope.tscn" id="2_dcdnx"]
@@ -24,5 +24,6 @@ scale = Vector2(7.04, 7.16)
 collision_layer = 3
 
 [node name="Player" parent="." instance=ExtResource("4_ltxy5")]
+scale = Vector2(7, 7)
 
 [editable path="Player"]
