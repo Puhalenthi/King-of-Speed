@@ -47,10 +47,12 @@ var previous_velocity: Vector2 = Vector2.ZERO
 var was_airborne: bool = false
 
 # Boost system
+@onready var boostbar = $BoostBar
 @export var max_boost: float = 100.0
 var current_boost: float = 100.0
+var collect_boost = false
 @export var boost_consumption_rate: float = 50.0
-@export var boost_speed_multiplier: float = 1.5
+@export var boost_speed_multiplier: float = 1.6
 var is_boosting: bool = false
 
 # Grapple system
@@ -99,6 +101,11 @@ func _physics_process(delta):
 	handle_grapple_physics(delta)  # New function for grapple constraint
 	update_momentum_buffer()
 	move_and_slide()
+	update_player_anim()
+	
+	if collect_boost:
+		current_boost+=1
+	boostbar.value = current_boost
 	
 	# Check for ground landing while grappled (must be after move_and_slide)
 	handle_grapple_ground_exit()
@@ -592,17 +599,28 @@ func _on_jumped():
 	# Called when jumping - useful for sound effects or animations
 	animated_sprite_2d.play("jump")
 	
-#func update_player_anim():
-	#if current_state != PlayerState.IDLE: #not idling update, hide sprite 2d
-		#animated_sprite_2d.hide = false
-		#sprite.hide = true
-	#if current_state == PlayerState.RUNNING: #animation handling for diff states
-		#animated_sprite_2d.play("running")
-	#elif is_super_speed_state():
-		#animated_sprite_2d.play("boost run")
-	#elif current_state == PlayerState.IDLE:
-		#animated_sprite_2d.hide = true
-		#sprite.hide = false
+func update_player_anim():
+	var direction = Input.get_axis("move_left", "move_right")
+
+	if PlayerState.IDLE == current_state:
+		animated_sprite_2d.play("idle")
+	if is_on_floor():
+		if is_super_speed_state():
+			animated_sprite_2d.play("boost run")
+		#if current_state == PlayerState.RUNNING and direction == 0 and !animated_sprite_2d.is_playing("stop run"):
+			#animated_sprite_2d.play("stop run")
 	
 func transferMomentum(direction):
 	velocity.x += momentum_buffer * direction
+
+
+func _on_boost_area_entered(area: Area2D) -> void:
+	pass # Replace with function body.
+
+
+func _on_boost_body_entered(body: Node2D) -> void:
+	collect_boost = true
+
+
+func _on_boost_body_exited(body: Node2D) -> void:
+	collect_boost = false

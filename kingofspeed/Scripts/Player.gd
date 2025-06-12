@@ -47,6 +47,7 @@ var previous_velocity: Vector2 = Vector2.ZERO
 var was_airborne: bool = false
 
 # Boost system
+@onready var boostbar = $BoostBar
 @export var max_boost: float = 100.0
 var current_boost: float = 100.0
 var collect_boost = false
@@ -104,6 +105,7 @@ func _physics_process(delta):
 	print(collect_boost)
 	if collect_boost:
 		current_boost+=1
+	boostbar.value = current_boost
 	
 	# Check for ground landing while grappled (must be after move_and_slide)
 	handle_grapple_ground_exit()

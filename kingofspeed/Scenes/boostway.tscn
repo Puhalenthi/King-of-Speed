@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://by701f6tkxndf"]
+[gd_scene load_steps=4 format=3 uid="uid://dfn0rokc11ar5"]
 
-[ext_resource type="Script" uid="uid://betee8cobyp83" path="res://Scripts/boostway.gd" id="1_6neep"]
+[ext_resource type="Script" path="res://Scripts/boostway.gd" id="1_6neep"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p78vy"]
 
