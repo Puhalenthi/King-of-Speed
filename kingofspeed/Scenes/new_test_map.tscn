@@ -3,7 +3,7 @@
 [ext_resource type="TileSet" uid="uid://c8skhbmqarkk3" path="res://Sprites/Map/groundtiles.tres" id="1_gh48d"]
 [ext_resource type="PackedScene" uid="uid://bp2c1440kuuft" path="res://Scenes/LeftSlope.tscn" id="2_dcdnx"]
 [ext_resource type="PackedScene" uid="uid://2sav6y5ymn54" path="res://Scenes/RightSlope.tscn" id="3_yn5in"]
-[ext_resource type="PackedScene" uid="uid://b84xvofva7ep7" path="res://Scenes/Player.tscn" id="4_ltxy5"]
+[ext_resource type="PackedScene" uid="uid://b84xvofva7ep7" path="res://Scenes/player.tscn" id="4_ltxy5"]
 
 [node name="newTestMap" type="Node2D"]
 

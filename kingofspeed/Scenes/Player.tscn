@@ -548,9 +548,10 @@ properties/2/spawn = true
 properties/2/replication_mode = 1
 
 [node name="Player" type="Node2D"]
+scale = Vector2(3, 3)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["player"]]
-collision_layer = 2
+collision_layer = 3
 script = ExtResource("1_rpqav")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="CharacterBody2D"]
@@ -575,7 +576,7 @@ offset_right = 22.0
 offset_bottom = -13.0
 text = "Thing"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 position = Vector2(-3, -14)
 scale = Vector2(0.466797, 0.466797)
 sprite_frames = SubResource("SpriteFrames_w4w4b")
