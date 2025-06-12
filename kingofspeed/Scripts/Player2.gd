@@ -14,6 +14,10 @@ enum PlayerState {
 var current_state: PlayerState = PlayerState.IDLE
 var previous_state: PlayerState = PlayerState.IDLE
 
+#visual variables
+@onready var animated_sprite_2d = $AnimatedSprite2D
+@onready var sprite_2d = %Sprite2D
+
 # Movement variables
 @export var speed: float = 800.0
 @export var jump_velocity: float = -600.0
@@ -24,6 +28,7 @@ var jumps = 2
 # Player facing direction
 var facing_right: bool = true
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var camera = $Camera2D
 
 # Slope handling
 @export var max_slope_angle: float = 50.0
@@ -66,13 +71,21 @@ var grapple_anchor_point: Vector2 = Vector2.ZERO
 # Get the gravity from the project settings to be synced with RigidBody nodes
 var gravity: int = 1500
 
+@rpc("any_peer", "call_remote", "unreliable", 0)
+func _rpc_sync_transform(pos: Vector2, vel: Vector2) -> void:
+	if not is_multiplayer_authority():
+		global_position = pos
+		velocity        = vel
+
 func _ready():
+	if not is_multiplayer_authority(): return
 	# Set up floor detection for slopes
 	floor_max_angle = deg_to_rad(max_slope_angle)
 	floor_snap_length = 8.0
 	floor_stop_on_slope = false
 
 func _physics_process(delta):
+	if not is_multiplayer_authority(): return
 	# Store previous state for ground penetration detection
 	previous_velocity = velocity
 	was_airborne = not is_on_floor()
@@ -95,6 +108,8 @@ func _physics_process(delta):
 	
 	# Update state after physics
 	previous_state = current_state
+	rpc("_rpc_sync_transform", global_position, velocity)
+
 
 func handle_grapple():
 	# Check if grapple input is being held
@@ -274,6 +289,10 @@ func _on_state_enter(state: PlayerState):
 						velocity = Vector2(-minimum_grapple_velocity * 0.7, minimum_grapple_velocity * 0.7)
 				
 				print("Velocity boosted to minimum grapple velocity: ", velocity.length())
+				
+
+	
+	
 
 func _on_state_exit(state: PlayerState):
 	match state:
@@ -311,7 +330,10 @@ func handle_gravity(delta):
 
 func handle_jump():
 	# Don't allow jumping when grappling or grappled
-	if current_state == PlayerState.GRAPPLING or current_state == PlayerState.GRAPPLED:
+	if current_state == PlayerState.GRAPPLING:
+		return
+	if current_state == PlayerState.GRAPPLED:
+		jumps = 1
 		return
 		
 	# Handle jump input
@@ -320,6 +342,10 @@ func handle_jump():
 	if Input.is_action_just_pressed("jump2") and jumps > 0:
 		jumps -= 1
 		velocity.y = jump_velocity
+		if is_on_floor():
+			animated_sprite_2d.play("jump")
+		else:
+			animated_sprite_2d.play("double jump")
 
 func handle_boost(delta):
 	# Don't allow boosting when grappled
@@ -344,10 +370,11 @@ func handle_movement(delta):
 		if velocity.x > 0:
 			facing_right = true
 			sprite.flip_h = false
+			animated_sprite_2d.flip_h = false
 		elif velocity.x < 0:
 			facing_right = false
 			sprite.flip_h = true
-		
+			animated_sprite_2d.flip_h = true
 		return
 	
 	# Get input direction
@@ -357,15 +384,20 @@ func handle_movement(delta):
 	if direction > 0:
 		facing_right = true
 		sprite.flip_h = false
+		animated_sprite_2d.flip_h = false
 	elif direction < 0:
 		facing_right = false
 		sprite.flip_h = true
+		animated_sprite_2d.flip_h = true
 	
 	if direction != 0:
 		# Calculate effective speed with boost multiplier
 		var effective_speed = speed
 		if is_boosting:
 			effective_speed *= boost_speed_multiplier
+			animated_sprite_2d.play("boost run")
+		else:
+			animated_sprite_2d.play("running")
 		
 		# Apply acceleration when moving
 		velocity.x = move_toward(velocity.x, direction * effective_speed, acceleration * delta)
@@ -374,6 +406,7 @@ func handle_movement(delta):
 		if is_on_floor():
 			var friction_to_use = get_current_friction()
 			velocity.x = move_toward(velocity.x, 0, friction_to_use * delta)
+			animated_sprite_2d.play("stop run")
 		else:
 			# Reduced air friction
 			var air_friction = get_current_friction() * 0.3
@@ -557,7 +590,19 @@ func _on_landed():
 
 func _on_jumped():
 	# Called when jumping - useful for sound effects or animations
-	pass
+	animated_sprite_2d.play("jump")
+	
+#func update_player_anim():
+	#if current_state != PlayerState.IDLE: #not idling update, hide sprite 2d
+		#animated_sprite_2d.hide = false
+		#sprite.hide = true
+	#if current_state == PlayerState.RUNNING: #animation handling for diff states
+		#animated_sprite_2d.play("running")
+	#elif is_super_speed_state():
+		#animated_sprite_2d.play("boost run")
+	#elif current_state == PlayerState.IDLE:
+		#animated_sprite_2d.hide = true
+		#sprite.hide = false
 	
 func transferMomentum(direction):
 	velocity.x += momentum_buffer * direction

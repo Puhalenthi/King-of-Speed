@@ -25,7 +25,4 @@ collision_layer = 3
 
 [node name="Player" parent="." instance=ExtResource("4_ltxy5")]
 
-[node name="CharacterBody2D" parent="Player" index="0"]
-collision_layer = 3
-
 [editable path="Player"]
